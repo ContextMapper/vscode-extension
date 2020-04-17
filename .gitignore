@@ -1,0 +1,18 @@
+# VS Code
+*.vsix
+.vscode
+
+# IDEA
+.idea/
+out/
+
+# Build
+.gradle/
+build/
+
+# Copied CML LSP binaries
+lsp/
+
+# Node
+node_modules
+

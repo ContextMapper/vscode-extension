@@ -1,0 +1,72 @@
+{
+    "name": "context-mapper-vscode-extension",
+    "displayName": "Context Mapper",
+    "description": "The Context Mapper VS Code Extension",
+    "version": "0.0.1",
+    "publisher": "ContextMapper",
+    "icon": "images/contextmapper.png",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ContextMapper/vscode-extension.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ContextMapper/vscode-extension/issues"
+    },
+    "engines": {
+        "vscode": "^1.33.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:cml"
+    ],
+    "main": "out/extension",
+    "contributes": {
+        "languages": [
+            {
+                "id": "cml",
+                "aliases": [
+                    "cml"
+                ],
+                "extensions": [
+                    ".cml"
+                ],
+                "configuration": "./cml.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "cml",
+                "scopeName": "text.cml",
+                "path": "./syntaxes/cml.tmLanguage.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "cml.a.proxy",
+                "title": "CML Command A"
+            },
+            {
+                "command": "cml.b",
+                "title": "CML Command B"
+            }
+        ]
+    },
+    "devDependencies": {
+        "vscode": "^1.1.33",
+        "typescript": "^3.3.400",
+        "@types/node": "^11.13.2"
+    },
+    "dependencies": {
+        "vsce": "^1.75.0",
+        "vscode-languageclient": "^5.2.1"
+    },
+    "scripts": {
+        "prepublish": "node ./node_modules/vscode/bin/install && tsc -p ./src",
+        "compile": "tsc -p ./src",
+        "watch": "tsc -w -p ./src",
+        "update-vscode": "node ./node_modules/vscode/bin/install"
+    }
+}

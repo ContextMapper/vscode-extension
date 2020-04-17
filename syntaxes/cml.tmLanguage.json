@@ -1,0 +1,43 @@
+{
+    "name": "Context Mapper DSL",
+    "scopeName": "text.cml",
+    "fileTypes": [
+        "cml"
+    ],
+    "repository": {
+        "general": {
+            "patterns": [
+                {
+                    "include": "#linecomment"
+                },
+                {
+                    "include": "#blockcomment"
+                },
+                {
+                    "include": "#keyword"
+                }
+            ]
+        },
+        "linecomment": {
+            "name": "comment.line.double-dash.cml",
+            "begin": "(^[ \\t]+)?(?=//)",
+            "end": "(?=$)"
+        },
+        "blockcomment": {
+            "name": "comment.block.cml",
+            "begin": "/\\*(\\*)?(?!/)",
+            "end": "\\*/"
+        },
+        
+        "keyword": {
+            "name": "keyword.control.cml",
+            "match": "\\b(BoundedContext)\\b"
+
+        }
+    },
+    "patterns": [
+        {
+            "include": "#general"
+        }
+    ]
+}
