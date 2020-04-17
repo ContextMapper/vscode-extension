@@ -1,5 +1,5 @@
 ![Context Mapper](https://raw.githubusercontent.com/wiki/ContextMapper/context-mapper-dsl/logo/cm-logo-github-small.png) 
-# Context Mapper VS Code Extension (ALPHA; WORK-IN-PROGRESS)
+# Context Mapper VS Code Extension (WORK-IN-PROGRESS)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 This repository contains a VS Code extension for Context Mapper and the CML language.
