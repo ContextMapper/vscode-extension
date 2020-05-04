@@ -6,6 +6,9 @@
 .idea/
 out/
 
+# VS Code
+*.code-workspace
+
 # Build
 .gradle/
 build/
