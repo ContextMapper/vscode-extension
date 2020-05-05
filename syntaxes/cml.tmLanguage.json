@@ -1,6 +1,6 @@
 {
     "name": "Context Mapper DSL",
-    "scopeName": "text.cml",
+    "scopeName": "source.cml",
     "fileTypes": [
         "cml"
     ],
@@ -14,7 +14,10 @@
                     "include": "#blockcomment"
                 },
                 {
-                    "include": "#keyword"
+                    "include": "#contextMapKeyword"
+                },
+                {
+                    "include": "#strings"
                 }
             ]
         },
@@ -28,11 +31,18 @@
             "begin": "/\\*(\\*)?(?!/)",
             "end": "\\*/"
         },
-        
-        "keyword": {
+        "contextMapKeyword": {
             "name": "keyword.control.cml",
-            "match": "\\b(BoundedContext)\\b"
-
+            "match": "\\b(ContextMap|type|state|contains|P|Partnership|SK|Shared-Kernel|implementationTechnology|U|D|C|S|OHS|PL|ACL|CF|Upstream-Downstream|Downstream-Upstream|Customer-Supplier|Supplier-Customer|exposedAggregates|downstreamRights)\\b"
+        },
+        "strings": {
+            "name": "string.quoted.double.cml",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": {
+                "name": "constant.character.escape.cml",
+                "match": "\\\\."
+            }
         }
     },
     "patterns": [

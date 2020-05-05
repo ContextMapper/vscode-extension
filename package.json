@@ -39,7 +39,7 @@
         "grammars": [
             {
                 "language": "cml",
-                "scopeName": "text.cml",
+                "scopeName": "source.cml",
                 "path": "./syntaxes/cml.tmLanguage.json"
             }
         ],

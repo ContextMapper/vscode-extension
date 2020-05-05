@@ -8,7 +8,7 @@ import { commands, window, workspace, ExtensionContext, Uri } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
-    // The server is a locally installed in src/mydsl
+    // The server is a locally installed in lsp
     let launcher = os.platform() === 'win32' ? 'context-mapper-lsp.bat' : 'context-mapper-lsp';
     let script = context.asAbsolutePath(path.join('lsp', 'bin', launcher));
 
