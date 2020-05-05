@@ -23,7 +23,7 @@ configurations {
 }
 
 dependencies {
-    cmlLSPTar "org.contextmapper:context-mapper-lsp:5.10.0@tar"
+    cmlLSPTar "org.contextmapper:context-mapper-lsp:${cmlVersion}@tar"
 }
 
 task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {
