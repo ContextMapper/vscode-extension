@@ -53,7 +53,12 @@
             },
             {
                 "command": "cml.generate.mdsl.proxy",
-                "title": "Generate MDSL Contracts",
+                "title": "Generate MDSL Service Contracts",
+                "when": "editorLangId == cml"
+            },
+            {
+                "command": "cml.generate.generic.text.file.proxy",
+                "title": "Generate Text File with Freemarker Template",
                 "when": "editorLangId == cml"
             }
         ],
@@ -66,8 +71,13 @@
                 },
                 {
                     "when": "resourceLangId == cml",
-                    "command": "cml.generate.mdsl.proxy",
+                    "command": "cml.generate.generic.text.file.proxy",
                     "group": "cmlGenerators@2"
+                },
+                {
+                    "when": "resourceLangId == cml",
+                    "command": "cml.generate.mdsl.proxy",
+                    "group": "cmlGenerators@3"
                 }
             ]
         }
