@@ -1,0 +1,23 @@
+language: java
+
+jdk:
+- openjdk11
+
+os:
+  - linux
+
+cache:
+  directories:
+  - $HOME/.gradle
+
+env:
+  - NODE_VERSION=10.16
+
+install:
+  - nvm install $NODE_VERSION
+  - npm install
+
+script:
+  - nvm use $NODE_VERSION
+  - ./gradlew clean build npmInstall
+
