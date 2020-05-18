@@ -4,7 +4,11 @@
 
 [ContextMapper](https://contextmapper.org/) is an open source tool providing a Domain-specific Language based on Domain-Driven Design (DDD) patterns for context mapping and service decomposition.
 
-This repository contains the VS Code extension of Context Mapper. Related repositories are:
+This repository contains the VS Code extension of Context Mapper. 
+
+![Context Mapper VS Code Extension](https://contextmapper.org/img/vscode-extension-screenshot-1.png)
+
+Related repositories are:
 
  * [Context Mapper DSL, Eclipse Plugin, and Language Server (LSP)](https://github.com/ContextMapper/context-mapper-dsl)
  * [Context Mapper Example Models](https://github.com/ContextMapper/context-mapper-examples)
