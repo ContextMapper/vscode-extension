@@ -2,7 +2,7 @@
 # Context Mapper VS Code Extension (work in progress)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-ContextMapper is an open source tool providing a Domain-specific Language based on Domain-Driven Design (DDD) patterns for context mapping and service decomposition.
+[ContextMapper](https://contextmapper.org/) is an open source tool providing a Domain-specific Language based on Domain-Driven Design (DDD) patterns for context mapping and service decomposition.
 
 This repository contains the VS Code extension of Context Mapper. Related repositories are:
 
