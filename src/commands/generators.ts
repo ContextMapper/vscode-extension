@@ -3,8 +3,8 @@
  */
 
 import { commands, window, Uri, OpenDialogOptions, InputBoxOptions } from "vscode";
-
-type CommandType = (...args: any[]) => any;
+import * as editor from "../cml-editor/cml-editor";
+import { CommandType } from "./command"
 
 export function generatePlantUML(): CommandType {
     return generate('cml.generate.puml', 'The PlantUML diagrams have been generated into the src-gen folder.');
@@ -46,10 +46,10 @@ export function generateGenericTextFile(): CommandType {
 
 function generate(command: string, successMessage: string, ...additionalParameters: any[]): CommandType {
     return async () => {
-        if (editorIsNotCMLEditor())
+        if (editor.isNotCMLEditor())
             return;
 
-        if (documentInEditorHasURI()) {
+        if (editor.documentHasURI()) {
             console.log(`Send command ${command} to CML language server.`);
             const returnVal: string = await commands.executeCommand(command, window.activeTextEditor.document.uri.toString(), additionalParameters);
             if (returnVal.startsWith('Error occurred:')) {
@@ -59,13 +59,4 @@ function generate(command: string, successMessage: string, ...additionalParamete
             }
         }
     };
-}
-
-function editorIsNotCMLEditor(): boolean {
-    let activeEditor = window.activeTextEditor;
-    return !activeEditor || !activeEditor.document || activeEditor.document.languageId !== 'cml';
-}
-
-function documentInEditorHasURI(): boolean {
-    return window.activeTextEditor.document.uri instanceof Uri;
 }

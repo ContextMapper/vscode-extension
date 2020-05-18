@@ -15,8 +15,13 @@ group 'org.contextmapper'
 version '1.0-SNAPSHOT'
 
 repositories {
-    mavenLocal()
     mavenCentral()
+
+    // add snapshots to get latest CML language server build
+    // TODO: remove snapshot repo and use latest CML release (as soon as v5.12.0 with LSP is released)
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
 }
 
 configurations {

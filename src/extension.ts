@@ -9,7 +9,6 @@ import { LanguageClient, LanguageClientOptions, ServerOptions, VersionedTextDocu
 import * as generators from "./commands/generators";
 
 export function activate(context: ExtensionContext) {
-    // The server is a locally installed in lsp
     let launcher = os.platform() === 'win32' ? 'context-mapper-lsp.bat' : 'context-mapper-lsp';
     let script = context.asAbsolutePath(path.join('lsp', 'bin', launcher));
 
