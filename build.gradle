@@ -5,14 +5,16 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.github.node-gradle:gradle-node-plugin:2.2.0'
+        classpath "com.github.node-gradle:gradle-node-plugin:${gradleNodePluginVersion}"
     }
 }
 
-apply plugin: 'com.github.node-gradle.node'
+plugins {
+    id 'nebula.release' version '13.0.0'
+    id 'com.github.node-gradle.node' version "${gradleNodePluginVersion}"
+}
 
 group 'org.contextmapper'
-version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -35,8 +37,8 @@ task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {
 }
 
 node {
-    version = '10.16.0'
-    npmVersion = '6.10.2'
+    version = nodeVersion
+    npmVersion = npmVersion
     download = true
 }
 
@@ -52,8 +54,8 @@ npmInstall {
 
 task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
     ext.destDir = new File(buildDir, 'vscode')
-    ext.archiveName = "$project.name-${project.version}.vsix"
-    ext.destPath = "$destDir/$archiveName"
+    ext.archiveName = "${project.name}-${project.version.toString()}.vsix"
+    ext.destPath = "${ext.destDir}/${ext.archiveName}"
     inputs.with {
         files inputFiles
         dir npmInstallVsce.destPath
@@ -63,7 +65,7 @@ task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce], type: NodeTask) {
         destDir.mkdirs()
     }
     script = file("$npmInstallVsce.destPath/out/vsce")
-    args = [ 'package', '--out', destPath ]
+    args = [ 'package', '--out', ext.destPath ]
     execOverrides {
         workingDir = projectDir
     }
@@ -83,8 +85,6 @@ plugins.withType(com.moowork.gradle.node.NodePlugin) {
         nodeModulesDir = rootProject.projectDir
     }
 }
-
-
 
 task copyLSPApplication(type: Copy) {
     from(tarTree(configurations.cmlLSPTar.files.iterator().next())) {
@@ -127,4 +127,11 @@ task publish(dependsOn: vscodeExtension, type: NodeTask) {
     execOverrides {
         workingDir = projectDir
     }
+}
+
+task checkVersion(type: InitBuild) {
+    def packageJsonFile = file('package.json')
+    def json = new groovy.json.JsonSlurper().parseText(packageJsonFile.text)
+    if(!project.version.toString().equals(json.version))
+        throw new GradleException("The project (Gradle) version and the extension (NPM) version do not match! (${json.version} != ${project.version})")
 }

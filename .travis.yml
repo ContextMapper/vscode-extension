@@ -19,5 +19,10 @@ install:
 
 script:
   - nvm use $NODE_VERSION
-  - ./gradlew clean build npmInstall
+  - | 
+    if [[ $TRAVIS_TAG =~ ^v.* ]]; then
+      ./gradlew clean final npmInstall -Prelease.useLastTag=true
+    else
+      ./gradlew clean snapshot npmInstall
+    fi
 
