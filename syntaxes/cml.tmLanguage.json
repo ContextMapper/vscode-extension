@@ -14,10 +14,25 @@
                     "include": "#blockcomment"
                 },
                 {
-                    "include": "#contextMapKeyword"
+                    "include": "#contextMapKeywords"
                 },
                 {
-                    "include": "#strings"
+                    "include": "#boundedContextKeywords"
+                },
+                {
+                    "include": "#domainKeywords"
+                },
+                {
+                    "include": "#userRequirementKeywords"
+                },
+                {
+                    "include": "#tacticDDDKeywords"
+                },
+                {
+                    "include": "#stringsSingle"
+                },
+                {
+                    "include": "#stringsDouble"
                 }
             ]
         },
@@ -31,18 +46,35 @@
             "begin": "/\\*(\\*)?(?!/)",
             "end": "\\*/"
         },
-        "contextMapKeyword": {
+        "contextMapKeywords": {
             "name": "keyword.control.cml",
-            "match": "\\b(ContextMap|type|state|contains|P|Partnership|SK|Shared-Kernel|implementationTechnology|U|D|C|S|OHS|PL|ACL|CF|Upstream-Downstream|Downstream-Upstream|Customer-Supplier|Supplier-Customer|exposedAggregates|downstreamRights)\\b"
+            "match": "\\b(import|ContextMap|type|state|contains|P|Partnership|SK|Shared-Kernel|implementationTechnology|U|D|C|S|OHS|PL|ACL|CF|Upstream-Downstream|Downstream-Upstream|Customer-Supplier|Supplier-Customer|exposedAggregates|downstreamRights|UNDEFINED|SYSTEM_LANDSCAPE|ORGANIZATIONAL|AS_IS|TO_BE|INFLUENCER|OPINION_LEADER|VETO_RIGHT|DECISION_MAKER|MONOPOLIST)\\b"
         },
-        "strings": {
+        "boundedContextKeywords": {
+            "name": "keyword.control.cml",
+            "match": "\\b(BoundedContext|implements|realizes|refines|domainVisionStatement|type|responsibilities|implementationTechnology|knowledgeLevel|UNDEFINED|FEATURE|APPLICATION|SYSTEM|TEAM|META|CONCRETE)\\b"
+        },
+        "domainKeywords": {
+            "name": "keyword.control.cml",
+            "match": "\\b(Domain|domainVisionStatement|Subdomain|type|domainVisionStatement|CORE_DOMAIN|SUPPORTING_DOMAIN|GENERIC_SUBDOMAIN)\\b"
+        },
+        "userRequirementKeywords": {
+            "name": "keyword.control.cml",
+            "match": "\\b(UseCase|UserStory|actor|interactions|benefit|scope|level|isLatencyCritical|reads|writes|As a|As an|I want to|so that|isLatencyCritical|true|reads|writes|a|an|with its|with their|in|for|create|read|update|delete)\\b"
+        },
+        "tacticDDDKeywords": {
+            "name": "keyword.control.cml",
+            "match": "\\b(Module|external|basePackage|hint|Aggregate|responsibilities|useCases|userRequirements|owner|knowledgeLevel|likelihoodForChange|Service|gap|nogap|webservice|Resource|scaffold|path|Consumer|unmarshall to|queueName|topicName|subscribe to|eventBus|publish|to|void|throws|hint|path|return|GET|POST|PUT|DELETE|abstract|Entity|extends|with|optimisticLocking|optimisticLocking|auditable|cache|databaseTable|discriminatorValue|discriminatorColumn|discriminatorType|discriminatorLength|inheritanceType|validate|aggregateRoot|belongsTo|ValueObject|DomainEvent|CommandEvent|Trait|package|def|DataTransferObject|BasicType|immutable|key|changeable|required|nullable|index|digits|email|future|past|max|min|decimalMax|decimalMin|notEmpty|notBlank|pattern|range|size|length|scriptAssert|url|validate|transient|databaseColumn|databaseType|cascade|fetch|orderby|orderColumn|Repository|enum|ordinal|JOINED|SINGLE_TABLE|STRING|CHAR|INTEGER|String|int|Integer|long|Long|boolean|Boolean|Date|DateTime|Timestamp|BigDecimal|BigInteger|double|Double|float|Float|Key|PagingParameter|PagedResult|Blob|Clob|Object|Set|List|Bag|Collection|Map|public|protected|private|package|not|delegates to|opposite|reference)\\b"
+        },
+        "stringsSingle": {
+            "name": "string.quoted.single.cml",
+            "begin": "'",
+            "end": "'"
+        },
+        "stringsDouble": {
             "name": "string.quoted.double.cml",
             "begin": "\"",
-            "end": "\"",
-            "patterns": {
-                "name": "constant.character.escape.cml",
-                "match": "\\\\."
-            }
+            "end": "\""
         }
     },
     "patterns": [
