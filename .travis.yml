@@ -16,13 +16,16 @@ env:
 install:
   - nvm install $NODE_VERSION
   - npm install
+  - |
+    export DISPLAY=':99.0'
+    /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 
 script:
   - nvm use $NODE_VERSION
   - | 
     if [[ $TRAVIS_TAG =~ ^v.* ]]; then
-      ./gradlew clean final npmInstall -Prelease.useLastTag=true
+      ./gradlew clean final vscodeExtension -Prelease.useLastTag=true
     else
-      ./gradlew clean snapshot npmInstall
+      ./gradlew clean snapshot vscodeExtension
     fi
 

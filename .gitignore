@@ -8,6 +8,7 @@ out/
 
 # VS Code
 *.code-workspace
+.vscode-test/
 
 # Build
 .gradle/
