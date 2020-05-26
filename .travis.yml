@@ -13,6 +13,9 @@ cache:
 env:
   - NODE_VERSION=10.16
 
+before_install:
+- sudo apt-get -y install libsecret-1-dev
+
 install:
   - nvm install $NODE_VERSION
   - npm install
