@@ -60,26 +60,79 @@
                 "command": "cml.generate.generic.text.file.proxy",
                 "title": "Generate Text File with Freemarker Template",
                 "when": "editorLangId == cml"
+            },
+            {
+                "command": "cml.generate.contextmap.proxy",
+                "title": "Generate Graphical Context Map",
+                "when": "editorLangId == cml"
             }
         ],
         "menus": {
             "editor/context": [
                 {
                     "when": "resourceLangId == cml",
-                    "command": "cml.generate.puml.proxy",
+                    "command": "cml.generate.contextmap.proxy",
                     "group": "cmlGenerators@1"
                 },
                 {
                     "when": "resourceLangId == cml",
-                    "command": "cml.generate.generic.text.file.proxy",
+                    "command": "cml.generate.puml.proxy",
                     "group": "cmlGenerators@2"
                 },
                 {
                     "when": "resourceLangId == cml",
-                    "command": "cml.generate.mdsl.proxy",
+                    "command": "cml.generate.generic.text.file.proxy",
                     "group": "cmlGenerators@3"
+                },
+                {
+                    "when": "resourceLangId == cml",
+                    "command": "cml.generate.mdsl.proxy",
+                    "group": "cmlGenerators@4"
                 }
             ]
+        },
+        "configuration": {
+            "title": "Context Mapper",
+            "properties": {
+                "generation.contextMapGenerator.fixImageWidth": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Fix the width of the generated images.",
+                    "scope": "resource"
+                },
+                "generation.contextMapGenerator.imageWidth": {
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "Width of the generated images (in case it is fixed).",
+                    "scope": "resource"
+                },
+                "generation.contextMapGenerator.fixImageHeight": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Fix the height of the generated images.",
+                    "scope": "resource"
+                },
+                "generation.contextMapGenerator.imageHeight": {
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "Height of the generated images (in case it is fixed).",
+                    "scope": "resource"
+                },
+                "generation.contextMapGenerator.generateLabels": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Generate extended labels (relationship names and implementation technologies).",
+                    "scope": "resource"
+                },
+                "generation.contextMapGenerator.labelSpacingFactor": {
+                    "type": "integer",
+                    "default": 5,
+                    "description": "Spacing factor: can improve results in case the images have overlapping labels.",
+                    "minimum": 1,
+                    "maximum": 20,
+                    "scope": "resource"
+                }
+            }
         }
     },
     "devDependencies": {

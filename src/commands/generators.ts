@@ -2,9 +2,11 @@
  * CML generator commands
  */
 
-import { commands, window, Uri, OpenDialogOptions, InputBoxOptions } from "vscode";
+import { commands, window, workspace, Uri, OpenDialogOptions, InputBoxOptions, TextDocumentShowOptions, ViewColumn } from "vscode";
 import * as editor from "../cml-editor/cml-editor";
 import { CommandType } from "./command"
+import * as fs from 'fs';
+import * as path from 'path';
 
 export function generatePlantUML(): CommandType {
     return generate('cml.generate.puml', 'The PlantUML diagrams have been generated into the src-gen folder.');
@@ -40,6 +42,37 @@ export function generateGenericTextFile(): CommandType {
             const templateUri: string = uriSelection[0].toString();
             const generateFunction: Function = generate('cml.generate.generic.text.file', 'The file has been generated into the src-gen folder.', { templateUri, outputFileName });
             generateFunction();
+        }
+    };
+}
+
+export function generateContextMap(): CommandType {
+    return async () => {
+        const currentDocument = window.activeTextEditor.document;
+        const configuration = workspace.getConfiguration('', currentDocument.uri);
+
+        var selection = [{ label: "png", picked: true }, { label: "svg", picked: true }, { label: "dot", picked: true }];
+        const selectedFormats: string[] = (await window.showQuickPick(selection, { canPickMany: true })).map(item => item.label);
+
+        const params = {
+            formats: selectedFormats,
+            fixWidth: configuration.get('generation.contextMapGenerator.fixImageWidth') as boolean,
+            fixHeight: configuration.get('generation.contextMapGenerator.fixImageHeight') as boolean,
+            width: configuration.get('generation.contextMapGenerator.imageWidth') as number,
+            height: configuration.get('generation.contextMapGenerator.imageHeight') as number,
+            generateLabels: configuration.get('generation.contextMapGenerator.generateLabels') as boolean,
+            labelSpacingFactor: configuration.get('generation.contextMapGenerator.labelSpacingFactor') as number
+        }
+
+        if (selectedFormats && params) {
+            const generateFunction: Function = generate('cml.generate.contextmap', 'The files have been generated into the src-gen folder.', params);
+            await generateFunction();
+
+            // preview png if it was generated
+            var inputFileName = currentDocument.uri.toString().substring(currentDocument.uri.toString().lastIndexOf(path.sep) + 1, currentDocument.uri.toString().length - 4);
+            var pngUri = Uri.file(workspace.rootPath + "/src-gen/" + inputFileName + "_ContextMap.png");
+            if (fs.existsSync(pngUri.toString().replace("file://", "")))
+                await commands.executeCommand('vscode.open', pngUri, { viewColumn: ViewColumn.Two });
         }
     };
 }

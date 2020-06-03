@@ -4,7 +4,7 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { Trace } from 'vscode-jsonrpc';
-import { commands, window, workspace, ExtensionContext, Uri, InputBoxOptions } from 'vscode';
+import { commands, workspace, ExtensionContext, Uri, InputBoxOptions } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions, VersionedTextDocumentIdentifier } from 'vscode-languageclient';
 import * as generators from "./commands/generators";
 
@@ -31,7 +31,8 @@ export function activate(context: ExtensionContext) {
     context.subscriptions.push(
         commands.registerCommand("cml.generate.puml.proxy", generators.generatePlantUML()),
         commands.registerCommand("cml.generate.mdsl.proxy", generators.generateMDSL()),
-        commands.registerCommand("cml.generate.generic.text.file.proxy", generators.generateGenericTextFile())
+        commands.registerCommand("cml.generate.generic.text.file.proxy", generators.generateGenericTextFile()),
+        commands.registerCommand("cml.generate.contextmap.proxy", generators.generateContextMap())
     );
 
     // enable tracing (.Off, .Messages, Verbose)

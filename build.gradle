@@ -17,6 +17,7 @@ plugins {
 group 'org.contextmapper'
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
