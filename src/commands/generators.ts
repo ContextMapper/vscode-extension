@@ -69,9 +69,9 @@ export function generateContextMap(): CommandType {
             await generateFunction();
 
             // preview png if it was generated
-            var inputFileName = currentDocument.uri.toString().substring(currentDocument.uri.toString().lastIndexOf(path.sep) + 1, currentDocument.uri.toString().length - 4);
+            var inputFileName = currentDocument.uri.toString().substring(currentDocument.uri.toString().lastIndexOf("/") + 1, currentDocument.uri.toString().length - 4);
             var pngUri = Uri.file(workspace.rootPath + "/src-gen/" + inputFileName + "_ContextMap.png");
-            if (fs.existsSync(pngUri.toString().replace("file://", "")))
+            if (fs.existsSync(pngUri.fsPath))
                 await commands.executeCommand('vscode.open', pngUri, { viewColumn: ViewColumn.Two });
         }
     };
