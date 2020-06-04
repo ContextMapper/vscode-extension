@@ -11,31 +11,33 @@ Related repositories are:
  * [Context Mapper DSL, Eclipse Plugin, and Language Server (LSP)](https://github.com/ContextMapper/context-mapper-dsl)
  * [Context Mapper Example Models](https://github.com/ContextMapper/context-mapper-examples)
 
-With the ContextMapper DSL language you can express DDD context maps. Once you have modeled your system with the language you can use the provided generators to create UML diagrams, service contracts, and calculate proposals for service decomposition with [Service Cutter](https://github.com/ServiceCutter/ServiceCutter).
+With the ContextMapper DSL language you can express DDD Context Maps. Once you have modeled your system with the language, you can use the provided generators to create graphical Context Maps, UML diagrams, service contracts, Spring Boot applications (via JHipster JDL) and calculate proposals for service decompositions with [Service Cutter](https://github.com/ServiceCutter/ServiceCutter).
 
 Checkout our website [https://contextmapper.org/](https://contextmapper.org/) to get started.
 The Context Mapper project has been developed as part of research projects at [HSR](https://www.hsr.ch) and you can find the project reports and further background information [here](https://contextmapper.org/background-and-publications/).
 
- **Installation:**
-  * Eclipse:
-    * [Eclipse Marketplace](https://marketplace.eclipse.org/content/context-mapper)
-    * Update Site: **https://dl.bintray.com/contextmapper/context-mapping-dsl/updates/**
+ **Installation Links:**
   * VS Code:
-    * **Not yet released and published**
-    * (_Documentation below explains how you can run the extension locally_)
+    * **[VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=contextmapper.context-mapper-vscode-extension)**
+  * Eclipse:
+    * **[Eclipse Marketplace](https://marketplace.eclipse.org/content/context-mapper)**
+    * Update Site: https://dl.bintray.com/contextmapper/context-mapping-dsl/updates/
 
 ## Features
-The VS Code extension already supports the following Context Mapper features: (we are working on this extension to support all features soon; if you need all features please use our Eclipse plugin)
+The VS Code extension already supports the following Context Mapper features: (we are working on this extension to support all features soon; if you need all features, please use our Eclipse plugin)
 
 * ContextMapper DSL language support (CML files)
     * Write context maps with bounded contexts and their relationships (Strategic DDD)
     * Specify bounded contexts (Tactic DDD): Tactic DSL based on [Sculptor](https://github.com/sculptor/sculptor)
     * Find examples in our [examples repository](https://github.com/ContextMapper/context-mapper-examples)
     * Consult our [online documentation](https://contextmapper.org/docs/) to get detailed language documentation, manuals and how to get started.
+* Generate [graphical Context Maps](https://contextmapper.org/docs/generators/)
 * Generate [PlantUML](http://plantuml.com/) component diagram from context map
 * Generate [PlantUML](http://plantuml.com/) class diagram from bounded context and/or subdomain (tactic DDD)
 * Generate [MDSL](https://socadk.github.io/MDSL/) (micro-) service contracts out of DDD context maps
 * Generate [generic text files](https://contextmapper.org/docs/generic-freemarker-generator/) using [Freemarker](https://freemarker.apache.org/) templates
+* [Rapid Object-oriented Analysis and Design](https://contextmapper.org/docs/rapid-ooad/) transformations:
+  * Steps 1 to 3 are already supported in VS Code
 
 ## System Requirements
 To use the ContextMapper VS Code extension you need the following tools (besides [VS Code](https://code.visualstudio.com/) and our extension) installed locally:
@@ -48,9 +50,8 @@ To use the ContextMapper VS Code extension you need the following tools (besides
 * Maybe you want to install the [PlantUML extension](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml) for the generated PlantUML diagrams.
 
 ## Getting Started
-**TODO: document installation process as soon as the extension is released**
-
-**Note:** For now, please use our [Eclipse plugin](https://contextmapper.org/docs/getting-started/).
+ * The extension can be downloaded and installed via the [Marketplace](https://marketplace.visualstudio.com/items?itemName=contextmapper.context-mapper-vscode-extension).
+ * Or: search for "Context Mapper" the extensions view of your running VS code (Ctrl+Shift+X).
 
 ## Build and/or Run Extension Locally
 This project uses [Gradle](https://gradle.org/) to build the VS code extension.
@@ -58,13 +59,13 @@ This project uses [Gradle](https://gradle.org/) to build the VS code extension.
 Once you cloned this repository, you can build the project with the following command:
 
 ```bash
-./gradlew clean build
+./gradlew clean snapshot vscodeExtension
 ```
 
 Use the following command to build and run the extension in your VS code:
 
 ```bash
-./gradlew startCode
+./gradlew snapshot startCode
 ```
 
 **Note:** VS Code must be available on the command line as `code` to use the command above.
