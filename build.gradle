@@ -55,7 +55,16 @@ npmInstall {
     outputs.dir('out')
 }
 
-task test(dependsOn: [npmInstall], type: NpmTask) {
+task checkVersion() {
+    doLast {
+        def packageJsonFile = file('package.json')
+        def json = new groovy.json.JsonSlurper().parseText(packageJsonFile.text)
+        if(!project.version.toString().equals(json.version))
+            throw new GradleException("The project (Gradle) version and the extension (NPM) version do not match! (${json.version} != ${project.version})")
+    }
+}
+
+task test(dependsOn: [npmInstall,checkVersion], type: NpmTask) {
     args = ['run', 'test']
 
     inputs.files fileTree('src')
@@ -138,13 +147,6 @@ task publish(dependsOn: vscodeExtension, type: NodeTask) {
     execOverrides {
         workingDir = projectDir
     }
-}
-
-task checkVersion(type: InitBuild) {
-    def packageJsonFile = file('package.json')
-    def json = new groovy.json.JsonSlurper().parseText(packageJsonFile.text)
-    if(!project.version.toString().equals(json.version))
-        throw new GradleException("The project (Gradle) version and the extension (NPM) version do not match! (${json.version} != ${project.version})")
 }
 
 task updateVersion() {
