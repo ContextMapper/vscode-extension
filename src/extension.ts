@@ -4,9 +4,10 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { Trace } from 'vscode-jsonrpc';
-import { commands, window, workspace, ExtensionContext, Uri, InputBoxOptions } from 'vscode';
+import { commands, workspace, ExtensionContext, Uri, InputBoxOptions } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions, VersionedTextDocumentIdentifier } from 'vscode-languageclient';
 import * as generators from "./commands/generators";
+import * as transformations from "./commands/transformations";
 
 export function activate(context: ExtensionContext) {
     let launcher = os.platform() === 'win32' ? 'context-mapper-lsp.bat' : 'context-mapper-lsp';
@@ -31,7 +32,14 @@ export function activate(context: ExtensionContext) {
     context.subscriptions.push(
         commands.registerCommand("cml.generate.puml.proxy", generators.generatePlantUML()),
         commands.registerCommand("cml.generate.mdsl.proxy", generators.generateMDSL()),
-        commands.registerCommand("cml.generate.generic.text.file.proxy", generators.generateGenericTextFile())
+        commands.registerCommand("cml.generate.generic.text.file.proxy", generators.generateGenericTextFile()),
+        commands.registerCommand("cml.generate.contextmap.proxy", generators.generateContextMap())
+    );
+
+    // Register OOAD transformation commands
+    context.subscriptions.push(
+        commands.registerCommand("cml.ar.deriveSubdomainFromURs.proxy", transformations.deriveSubdomainFromUserRequirements()),
+        commands.registerCommand("cml.ar.deriveBoundedContextFromSDs.proxy", transformations.deriveBoundedContextFromSubdomains())
     );
 
     // enable tracing (.Off, .Messages, Verbose)

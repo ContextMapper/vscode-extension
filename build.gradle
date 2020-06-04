@@ -17,6 +17,9 @@ plugins {
 group 'org.contextmapper'
 
 repositories {
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
     mavenCentral()
 }
 
@@ -142,4 +145,29 @@ task checkVersion(type: InitBuild) {
     def json = new groovy.json.JsonSlurper().parseText(packageJsonFile.text)
     if(!project.version.toString().equals(json.version))
         throw new GradleException("The project (Gradle) version and the extension (NPM) version do not match! (${json.version} != ${project.version})")
+}
+
+task updateVersion() {
+    doLast {
+        if(!project.hasProperty('newVersion'))
+            throw new GradleException("Please define the 'newVersion' property")
+
+        def newVersion = project.properties["newVersion"]
+
+        def versionPattern = /\d+.\d+.\d+(-SNAPSHOT)?/
+        if(!newVersion.matches(versionPattern))
+            throw new GradleException("Please give a proper version: x.y.z")
+
+        println("Updating version to " + newVersion)
+
+        def filesToUpdate = [
+            new File(project.projectDir, 'package.json')
+        ]
+
+        filesToUpdate.forEach { file ->
+            String text = file.getText("UTF-8")
+            text = text.replaceAll("\"version\": \"$versionPattern\",", "\"version\": \"$newVersion\",")
+            file.setText(text, "UTF-8")
+        }
+    }
 }
