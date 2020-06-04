@@ -17,7 +17,9 @@ plugins {
 group 'org.contextmapper'
 
 repositories {
-    mavenLocal()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
     mavenCentral()
 }
 
@@ -146,22 +148,26 @@ task checkVersion(type: InitBuild) {
 }
 
 task updateVersion() {
-    if(newVersion == null || "".equals(newVersion))
-        throw new GradleException("Please defined the 'newVersion' property")
+    doLast {
+        if(!project.hasProperty('newVersion'))
+            throw new GradleException("Please define the 'newVersion' property")
 
-    def versionPattern = /\d+.\d+.\d+(-SNAPSHOT)?/
-    if(!newVersion.matches(versionPattern))
-        throw new GradleException("Please give a proper version: x.y.z")
+        def newVersion = project.properties["newVersion"]
 
-    println("Updating version to " + newVersion)
+        def versionPattern = /\d+.\d+.\d+(-SNAPSHOT)?/
+        if(!newVersion.matches(versionPattern))
+            throw new GradleException("Please give a proper version: x.y.z")
 
-    def filesToUpdate = [
-        new File(project.projectDir, 'package.json')
-    ]
+        println("Updating version to " + newVersion)
 
-    filesToUpdate.forEach { file ->
-        String text = file.getText("UTF-8")
-        text = text.replaceAll("\"version\": \"$versionPattern\",", "\"version\": \"$newVersion\",")
-        file.setText(text, "UTF-8")
+        def filesToUpdate = [
+            new File(project.projectDir, 'package.json')
+        ]
+
+        filesToUpdate.forEach { file ->
+            String text = file.getText("UTF-8")
+            text = text.replaceAll("\"version\": \"$versionPattern\",", "\"version\": \"$newVersion\",")
+            file.setText(text, "UTF-8")
+        }
     }
 }
