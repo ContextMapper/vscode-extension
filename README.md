@@ -4,16 +4,12 @@
 
 [ContextMapper](https://contextmapper.org/) is an open source tool providing a Domain-specific Language based on Domain-Driven Design (DDD) patterns for context mapping and service decomposition.
 
-This repository contains the VS Code extension of Context Mapper. 
-
 ![Context Mapper VS Code Extension](https://contextmapper.org/img/vscode-extension-screenshot-1.png)
 
 Related repositories are:
 
  * [Context Mapper DSL, Eclipse Plugin, and Language Server (LSP)](https://github.com/ContextMapper/context-mapper-dsl)
  * [Context Mapper Example Models](https://github.com/ContextMapper/context-mapper-examples)
-
-**NOTE:** This extension is currenlty work in progress and not yet released. 
 
 With the ContextMapper DSL language you can express DDD context maps. Once you have modeled your system with the language you can use the provided generators to create UML diagrams, service contracts, and calculate proposals for service decomposition with [Service Cutter](https://github.com/ServiceCutter/ServiceCutter).
 
