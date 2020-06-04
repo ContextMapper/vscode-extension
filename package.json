@@ -3,7 +3,7 @@
     "displayName": "Context Mapper",
     "description": "The Context Mapper VS Code Extension",
     "version": "5.13.0-SNAPSHOT",
-    "publisher": "ContextMapper",
+    "publisher": "contextmapper",
     "icon": "resources/contextmapper.png",
     "license": "Apache-2.0",
     "repository": {
