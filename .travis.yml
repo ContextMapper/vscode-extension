@@ -27,7 +27,7 @@ script:
   - nvm use $NODE_VERSION
   - | 
     if [[ $TRAVIS_TAG =~ ^v.* ]]; then
-      ./gradlew clean final publish -Prelease.useLastTag=true
+      ./gradlew clean final publish -Prelease.useLastTag=true --debug
     else
       ./gradlew clean snapshot vscodeExtension
     fi
