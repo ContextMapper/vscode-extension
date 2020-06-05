@@ -24,20 +24,7 @@ The Context Mapper project has been developed as part of research projects at [H
     * Update Site: https://dl.bintray.com/contextmapper/context-mapping-dsl/updates/
 
 ## Features
-The VS Code extension already supports the following Context Mapper features: (we are working on this extension to support all features soon; if you need all features, please use our Eclipse plugin)
-
-* ContextMapper DSL language support (CML files)
-    * Write context maps with bounded contexts and their relationships (Strategic DDD)
-    * Specify bounded contexts (Tactic DDD): Tactic DSL based on [Sculptor](https://github.com/sculptor/sculptor)
-    * Find examples in our [examples repository](https://github.com/ContextMapper/context-mapper-examples)
-    * Consult our [online documentation](https://contextmapper.org/docs/) to get detailed language documentation, manuals and how to get started.
-* Generate [graphical Context Maps](https://contextmapper.org/docs/generators/)
-* Generate [PlantUML](http://plantuml.com/) component diagram from context map
-* Generate [PlantUML](http://plantuml.com/) class diagram from bounded context and/or subdomain (tactic DDD)
-* Generate [MDSL](https://socadk.github.io/MDSL/) (micro-) service contracts out of DDD context maps
-* Generate [generic text files](https://contextmapper.org/docs/generic-freemarker-generator/) using [Freemarker](https://freemarker.apache.org/) templates
-* [Rapid Object-oriented Analysis and Design](https://contextmapper.org/docs/rapid-ooad/) transformations:
-  * Steps 1 to 3 are already supported in VS Code
+We have only recently published the VS Code extension and it does not support all Context Mapper features yet. Find a feature support table [here](https://contextmapper.org/docs/ide/). We continuously work on the extension and it should support all features soon!
 
 ## System Requirements
 To use the ContextMapper VS Code extension you need the following tools (besides [VS Code](https://code.visualstudio.com/) and our extension) installed locally:
@@ -52,6 +39,8 @@ To use the ContextMapper VS Code extension you need the following tools (besides
 ## Getting Started
  * The extension can be downloaded and installed via the [Marketplace](https://marketplace.visualstudio.com/items?itemName=contextmapper.context-mapper-vscode-extension).
  * Or: search for "Context Mapper" the extensions view of your running VS code (Ctrl+Shift+X).
+
+ * Next steps after installation: Consult our [website](https://contextmapper.org/) to learn how to [get started with Context Mapper](https://contextmapper.org/docs/getting-started/).
 
 ## Build and/or Run Extension Locally
 This project uses [Gradle](https://gradle.org/) to build the VS code extension.
