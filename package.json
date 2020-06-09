@@ -19,6 +19,16 @@
     "categories": [
         "Programming Languages"
     ],
+    "keywords": [
+        "Context Mapper",
+        "Context Mapping DSL",
+        "CML",
+        "Domain-driven Design", 
+        "DDD",
+        "Domain-specific Language",
+        "DSL",
+        "Domain Modeling"
+    ],
     "activationEvents": [
         "onLanguage:cml"
     ],
