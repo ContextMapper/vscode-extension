@@ -1,0 +1,3 @@
+# Context Mapper VS Code Extension Changelog
+
+You can find the [Context Mapper release notes on our website](https://contextmapper.org/allnews)...
