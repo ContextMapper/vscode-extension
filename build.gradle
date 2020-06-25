@@ -146,6 +146,10 @@ task publish(dependsOn: vscodeExtension, type: NodeTask) {
     }
 }
 
+task publishToOpenVSX(dependsOn: vscodeExtension, type: Exec) {
+    commandLine 'npx', 'ovsx', '--debug', 'publish', "--packagePath", projectDir, '--pat', System.getenv('OPENVSX_ACCESS_TOKEN')
+}
+
 task updateVersion() {
     doLast {
         if(!project.hasProperty('newVersion'))
