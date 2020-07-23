@@ -3,10 +3,9 @@
  */
 
 import { commands, window, workspace, Uri, OpenDialogOptions, InputBoxOptions, TextDocumentShowOptions, ViewColumn } from "vscode";
-import * as editor from "../cml-editor/cml-editor";
+import * as editor from "../editors/cml-editor";
 import { CommandType } from "./command"
 import * as fs from 'fs';
-import * as path from 'path';
 
 export function generatePlantUML(): CommandType {
     return generate('cml.generate.puml', 'The PlantUML diagrams have been generated into the src-gen folder.');
@@ -75,6 +74,22 @@ export function generateContextMap(): CommandType {
                 await commands.executeCommand('vscode.open', pngUri, { viewColumn: ViewColumn.Two });
         }
     };
+}
+
+export function generateNewServiceCut(): CommandType {
+    return generate('cml.generate.new.service.cut', 'The new CML model (new service cut) has been created.');
+}
+
+export function generateServiceCutterInput(): CommandType {
+    return generate('cml.generate.servicecutter.input', 'The Service Cutter input file (JSON) has been generated into the src-gen folder.');
+}
+
+export function generateServiceCutterUserRepresentations(): CommandType {
+    return generate('cml.generate.servicecutter.user.representations', 'The Service Cutter user representations file (SCL) has been generated.');
+}
+
+export function generateServiceCutterUserRepresentationExampleFile(): CommandType {
+    return generate('cml.generate.servicecutter.user.representation.example.file', 'The Service Cutter user representation example file file (SCL) has been generated.');
 }
 
 function generate(command: string, successMessage: string, ...additionalParameters: any[]): CommandType {

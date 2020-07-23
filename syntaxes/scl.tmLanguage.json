@@ -1,0 +1,71 @@
+{
+    "name": "Service Cutter DSL",
+    "scopeName": "source.scl",
+    "fileTypes": [
+        "scl"
+    ],
+    "repository": {
+        "general": {
+            "patterns": [
+                {
+                    "include": "#linecomment"
+                },
+                {
+                    "include": "#blockcomment"
+                },
+                {
+                    "include": "#useCaseKeywords"
+                },
+                {
+                    "include": "#compatibilitiesKeywords"
+                },
+                {
+                    "include": "#commonSCLKeywords"
+                },
+                {
+                    "include": "#stringsSingle"
+                },
+                {
+                    "include": "#stringsDouble"
+                }
+            ]
+        },
+        "linecomment": {
+            "name": "comment.line.double-dash.scl",
+            "begin": "(^[ \\t]+)?(?=//)",
+            "end": "(?=$)"
+        },
+        "blockcomment": {
+            "name": "comment.block.scl",
+            "begin": "/\\*(\\*)?(?!/)",
+            "end": "\\*/"
+        },
+        "useCaseKeywords": {
+            "name": "keyword.control.scl",
+            "match": "\\b(UseCase|isLatencyCritical|true|reads|writes)\\b"
+        },
+        "compatibilitiesKeywords": {
+            "name": "keyword.control.scl",
+            "match": "\\b(Compatibilities|AvailabilityCriticality|characteristic|ConsistencyCriticality|ContentVolatility|SecurityCriticality|StorageSimilarity|StructuralVolatility)\\b"
+        },
+        "commonSCLKeywords": {
+            "name": "keyword.control.scl",
+            "match": "\\b(Aggregate|Entity|PredefinedService|SecurityAccessGroup|SeparatedSecurityZone|SharedOwnerGroup)\\b"
+        },
+        "stringsSingle": {
+            "name": "string.quoted.single.scl",
+            "begin": "'",
+            "end": "'"
+        },
+        "stringsDouble": {
+            "name": "string.quoted.double.scl",
+            "begin": "\"",
+            "end": "\""
+        }
+    },
+    "patterns": [
+        {
+            "include": "#general"
+        }
+    ]
+}

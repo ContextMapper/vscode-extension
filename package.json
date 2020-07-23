@@ -30,7 +30,8 @@
         "Domain Modeling"
     ],
     "activationEvents": [
-        "onLanguage:cml"
+        "onLanguage:cml",
+        "onLanguage:scl"
     ],
     "main": "out/extension",
     "contributes": {
@@ -46,6 +47,18 @@
                     ".cml"
                 ],
                 "configuration": "./cml.configuration.json"
+            },
+            {
+                "id": "scl",
+                "aliases": [
+                    "Service Cutter DSL",
+                    "SCL",
+                    "scl"
+                ],
+                "extensions": [
+                    ".scl"
+                ],
+                "configuration": "./scl.configuration.json"
             }
         ],
         "grammars": [
@@ -53,6 +66,11 @@
                 "language": "cml",
                 "scopeName": "source.cml",
                 "path": "./syntaxes/cml.tmLanguage.json"
+            },
+            {
+                "language": "scl",
+                "scopeName": "source.scl",
+                "path": "./syntaxes/scl.tmLanguage.json"
             }
         ],
         "commands": [
@@ -75,6 +93,31 @@
                 "command": "cml.generate.contextmap.proxy",
                 "title": "Generate Graphical Context Map",
                 "when": "editorLangId == cml"
+            },
+            {
+                "command": "cml.generate.new.service.cut.proxy",
+                "title": "Generate New Service Cut",
+                "when": "editorLangId == cml"
+            },
+            {
+                "command": "cml.generate.servicecutter.input.proxy",
+                "title": "Generate Service Cutter Input (ERD as JSON)",
+                "when": "editorLangId == cml"
+            },
+            {
+                "command": "cml.generate.servicecutter.user.representations.proxy",
+                "title": "Generate Service Cutter User Representations (SCL)",
+                "when": "editorLangId == cml"
+            },
+            {
+                "command": "cml.generate.servicecutter.user.representation.example.file.proxy",
+                "title": "Generate Service Cutter User Representation Example File (SCL)",
+                "when": "editorLangId == cml"
+            },
+            {
+                "command": "scl.generate.user.representations.json.file.proxy",
+                "title": "Generate Service Cutter User Representation JSON File",
+                "when": "editorLangId == scl"
             }
         ],
         "menus": {
@@ -98,6 +141,31 @@
                     "when": "resourceLangId == cml",
                     "command": "cml.generate.mdsl.proxy",
                     "group": "cmlGenerators@4"
+                },
+                {
+                    "when": "resourceLangId == cml",
+                    "command": "cml.generate.new.service.cut.proxy",
+                    "group": "cmlGenerators@5"
+                },
+                {
+                    "when": "resourceLangId == cml",
+                    "command": "cml.generate.servicecutter.input.proxy",
+                    "group": "cmlGenerators@6"
+                },
+                {
+                    "when": "resourceLangId == cml",
+                    "command": "cml.generate.servicecutter.user.representations.proxy",
+                    "group": "cmlGenerators@7"
+                },
+                {
+                    "when": "resourceLangId == cml",
+                    "command": "cml.generate.servicecutter.user.representation.example.file.proxy",
+                    "group": "cmlGenerators@8"
+                },
+                {
+                    "when": "resourceLangId == scl",
+                    "command": "scl.generate.user.representations.json.file.proxy",
+                    "group": "sclGenerators@1"
                 }
             ]
         },

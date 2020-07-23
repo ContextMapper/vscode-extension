@@ -7,6 +7,7 @@ import { Trace } from 'vscode-jsonrpc';
 import { commands, workspace, ExtensionContext, Uri, InputBoxOptions } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions, VersionedTextDocumentIdentifier } from 'vscode-languageclient';
 import * as generators from "./commands/generators";
+import * as sclGenerators from "./commands/sclGenerators";
 import * as transformations from "./commands/transformations";
 
 export function activate(context: ExtensionContext) {
@@ -19,7 +20,7 @@ export function activate(context: ExtensionContext) {
     };
 
     let clientOptions: LanguageClientOptions = {
-        documentSelector: ['cml'],
+        documentSelector: ['cml', 'scl'],
         synchronize: {
             fileEvents: workspace.createFileSystemWatcher('**/*.*')
         }
@@ -30,10 +31,18 @@ export function activate(context: ExtensionContext) {
 
     // Register generator commands
     context.subscriptions.push(
+        // CML
         commands.registerCommand("cml.generate.puml.proxy", generators.generatePlantUML()),
         commands.registerCommand("cml.generate.mdsl.proxy", generators.generateMDSL()),
         commands.registerCommand("cml.generate.generic.text.file.proxy", generators.generateGenericTextFile()),
-        commands.registerCommand("cml.generate.contextmap.proxy", generators.generateContextMap())
+        commands.registerCommand("cml.generate.contextmap.proxy", generators.generateContextMap()),
+        commands.registerCommand("cml.generate.new.service.cut.proxy", generators.generateNewServiceCut()),
+        commands.registerCommand("cml.generate.servicecutter.input.proxy", generators.generateServiceCutterInput()),
+        commands.registerCommand("cml.generate.servicecutter.user.representations.proxy", generators.generateServiceCutterUserRepresentations()),
+        commands.registerCommand("cml.generate.servicecutter.user.representation.example.file.proxy", generators.generateServiceCutterUserRepresentationExampleFile()),
+        
+        // SCL
+        commands.registerCommand("scl.generate.user.representations.json.file.proxy", sclGenerators.generateServiceCutterUserRepresentationJSONFile())
     );
 
     // Register OOAD transformation commands
