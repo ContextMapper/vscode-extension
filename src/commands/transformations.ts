@@ -45,6 +45,36 @@ export function deriveBoundedContextFromSubdomains(): CommandType {
     };
 }
 
+export function deriveFrontendAndBackendSystemFromFeatureBC(): CommandType {
+    return async (...args: any[]) => {
+        const integrationType = await input.askForStringSelection("Please choose how the new systems shall integrate.", ["CONFORMIST", "ACL"]);
+        if(!integrationType)
+            return;
+
+        const featureBoundedContextName : string = args[1];
+
+        const transformFunction: Function = transform('cml.ar.deriveFrontendBackendSystemsFromFeatureBC', featureBoundedContextName, integrationType);
+        transformFunction();
+    };
+}
+
+export function splitSystemContextIntoSubsystems(): CommandType {
+    return async (...args: any[]) => {
+        const existingSystemName : string = args[1];
+        
+        const name4ExistingContext = await input.askForName("Please provide a name for the existing system.", existingSystemName);
+        if(!name4ExistingContext)
+            return;
+        
+        const name4NewContext = await input.askForName("Please provide a name for the new system that shall be extracted.", "NewSubSystem");
+        if(!name4NewContext)
+            return;
+
+        const transformFunction: Function = transform('cml.ar.splitSystemContextIntoSubsystems', existingSystemName, name4ExistingContext, name4NewContext);
+        transformFunction();
+    };
+}
+
 function transform(command: string, ...additionalParameters: any[]): CommandType {
     return async () => {
         if (editor.isNotCMLEditor())

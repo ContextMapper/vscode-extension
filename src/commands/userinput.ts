@@ -15,3 +15,7 @@ export async function askForName(prompt : string, initialValue : string) : Promi
     }
     return await window.showInputBox(inputBoxOptions);
 }
+
+export async function askForStringSelection(prompt : string, values : string[]) : Promise<string> {
+    return await window.showQuickPick(values);
+}
