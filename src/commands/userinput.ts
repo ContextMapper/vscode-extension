@@ -1,8 +1,8 @@
 /* user input helpers */
 
-import { window, InputBoxOptions } from "vscode";
+import { window, InputBoxOptions, QuickPickOptions } from "vscode";
 
-export async function askForName(prompt : string, initialValue : string) : Promise<string> {
+export async function askForName(prompt: string, initialValue: string): Promise<string> {
     const inputBoxOptions: InputBoxOptions = {
         value: initialValue,
         prompt: prompt,
@@ -16,6 +16,10 @@ export async function askForName(prompt : string, initialValue : string) : Promi
     return await window.showInputBox(inputBoxOptions);
 }
 
-export async function askForStringSelection(prompt : string, values : string[]) : Promise<string> {
-    return await window.showQuickPick(values);
+export async function askForStringSelection(prompt: string, values: string[]): Promise<string> {
+    return await window.showQuickPick(values, { placeHolder: prompt });
+}
+
+export async function askForMultipleStringSelection(prompt: string, values: string[]): Promise<string[]> {
+    return await window.showQuickPick(values, { canPickMany: true, placeHolder: prompt });
 }
