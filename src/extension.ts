@@ -50,7 +50,12 @@ export function activate(context: ExtensionContext) {
         commands.registerCommand("cml.ar.deriveSubdomainFromURs.proxy", transformations.deriveSubdomainFromUserRequirements()),
         commands.registerCommand("cml.ar.deriveBoundedContextFromSDs.proxy", transformations.deriveBoundedContextFromSubdomains()),
         commands.registerCommand("cml.ar.deriveFrontendBackendSystemsFromFeatureBC.proxy", transformations.deriveFrontendAndBackendSystemFromFeatureBC()),
-        commands.registerCommand("cml.ar.splitSystemContextIntoSubsystems.proxy", transformations.splitSystemContextIntoSubsystems())
+        commands.registerCommand("cml.ar.splitSystemContextIntoSubsystems.proxy", transformations.splitSystemContextIntoSubsystems()),
+        commands.registerCommand("cml.ar.extractAggregatesByVolatility.proxy", transformations.extractAggregatesByVolatility()),
+        commands.registerCommand("cml.ar.extractAggregatesByCohesion.proxy", transformations.extractAggregatesByCohesion()),
+        commands.registerCommand("cml.ar.mergeAggregates.proxy", transformations.mergeAggregates()),
+        commands.registerCommand("cml.ar.mergeBoundedContexts.proxy", transformations.mergeBoundedContexts()),
+        commands.registerCommand("cml.ar.suspendPartnership.proxy", transformations.suspendPartnership())
     );
 
     // enable tracing (.Off, .Messages, Verbose)
