@@ -55,7 +55,8 @@ export function activate(context: ExtensionContext) {
         commands.registerCommand("cml.ar.extractAggregatesByCohesion.proxy", transformations.extractAggregatesByCohesion()),
         commands.registerCommand("cml.ar.mergeAggregates.proxy", transformations.mergeAggregates()),
         commands.registerCommand("cml.ar.mergeBoundedContexts.proxy", transformations.mergeBoundedContexts()),
-        commands.registerCommand("cml.ar.suspendPartnership.proxy", transformations.suspendPartnership())
+        commands.registerCommand("cml.ar.suspendPartnership.proxy", transformations.suspendPartnership()),
+        commands.registerCommand("cml.ar.extractSuggestedService.proxy", transformations.extractSuggestedServiceCut())
     );
 
     // enable tracing (.Off, .Messages, Verbose)
