@@ -60,7 +60,7 @@
         },
         "userRequirementKeywords": {
             "name": "keyword.control.cml",
-            "match": "\\b(UseCase|UserStory|actor|interactions|benefit|scope|level|isLatencyCritical|reads|writes|As a|As an|I want to|so that|isLatencyCritical|true|reads|writes|a|an|with its|with their|in|for|create|read|update|delete|supports)\\b"
+            "match": "\\b(UseCase|UserStory|actor|interactions|benefit|scope|level|isLatencyCritical|reads|writes|As a|As an|I want to|so that|isLatencyCritical|true|reads|writes|a|an|with its|with their|in|for|to|create|read|update|delete|supports)\\b"
         },
         "tacticDDDKeywords": {
             "name": "keyword.control.cml",

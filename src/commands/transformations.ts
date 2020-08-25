@@ -6,6 +6,7 @@ import { commands, window, workspace, Uri, OpenDialogOptions, InputBoxOptions, T
 import * as editor from "../editors/cml-editor";
 import { CommandType } from "./command"
 import * as input from "./userinput";
+import * as fs from 'fs';
 
 export function deriveSubdomainFromUserRequirements(): CommandType {
     return async (...args: any[]) => {
@@ -178,6 +179,27 @@ export function suspendPartnership(): CommandType {
 
         if (transformFunction != null)
             transformFunction();
+    };
+}
+
+export function extractSuggestedServiceCut(): CommandType {
+    return async (...args: any[]) => {
+        const originalModelURI: string = args[0];
+        const serviceCutModelURI: string = args[1];
+        const serviceName: string = args[2];
+
+        const newBoundedContextName: string = await input.askForName("Please define how the new Bounded Context shall be named.", "NewBoundedContext");
+        if (!newBoundedContextName)
+            return;
+
+        const origUri: Uri = Uri.parse(originalModelURI);
+        if (fs.existsSync(origUri.fsPath)) 
+            await commands.executeCommand('vscode.open', origUri, { viewColumn: ViewColumn.Two });
+        
+        const returnVal: string = await commands.executeCommand('cml.ar.extractSuggestedService', originalModelURI, [serviceCutModelURI, serviceName, newBoundedContextName]);
+        if (returnVal.startsWith('Error occurred:')) {
+            window.showErrorMessage(returnVal);
+        }
     };
 }
 

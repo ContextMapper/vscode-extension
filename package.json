@@ -96,7 +96,7 @@
             },
             {
                 "command": "cml.generate.new.service.cut.proxy",
-                "title": "Generate New Service Cut",
+                "title": "Propose New Service Cut",
                 "when": "editorLangId == cml"
             },
             {
@@ -111,7 +111,7 @@
             },
             {
                 "command": "cml.generate.servicecutter.user.representation.example.file.proxy",
-                "title": "Generate Service Cutter User Representation Example File (SCL)",
+                "title": "Generate SCL Example File (Syntax Sample)",
                 "when": "editorLangId == cml"
             },
             {
