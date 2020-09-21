@@ -10,6 +10,11 @@ out/
 *.code-workspace
 .vscode-test/
 
+# Eclipse
+.project
+.classpath
+.settings/
+
 # Build
 .gradle/
 build/
