@@ -209,6 +209,12 @@
                     "minimum": 1,
                     "maximum": 20,
                     "scope": "resource"
+                },
+                "generation.contextMapGenerator.clusterTeams": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Cluster team Bounded Contexts and generic Bounded Contexts (relevant for team maps only).",
+                    "scope": "resource"
                 }
             }
         }
