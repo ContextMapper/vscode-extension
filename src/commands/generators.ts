@@ -60,7 +60,8 @@ export function generateContextMap(): CommandType {
             width: configuration.get('generation.contextMapGenerator.imageWidth') as number,
             height: configuration.get('generation.contextMapGenerator.imageHeight') as number,
             generateLabels: configuration.get('generation.contextMapGenerator.generateLabels') as boolean,
-            labelSpacingFactor: configuration.get('generation.contextMapGenerator.labelSpacingFactor') as number
+            labelSpacingFactor: configuration.get('generation.contextMapGenerator.labelSpacingFactor') as number,
+            clusterTeams: configuration.get('generation.contextMapGenerator.clusterTeams') as boolean
         }
 
         if (selectedFormats && params) {
