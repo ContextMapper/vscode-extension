@@ -18,9 +18,7 @@ group 'org.contextmapper'
 
 repositories {
     mavenCentral()
-    maven {
-        url "https://oss.sonatype.org/content/repositories/snapshots/"
-    }
+    mavenLocal()
 }
 
 configurations {

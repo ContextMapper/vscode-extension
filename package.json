@@ -2,7 +2,7 @@
     "name": "context-mapper-vscode-extension",
     "displayName": "Context Mapper",
     "description": "The Context Mapper VS Code Extension",
-    "version": "6.1.0-SNAPSHOT",
+    "version": "6.1.0",
     "publisher": "contextmapper",
     "icon": "resources/contextmapper.png",
     "license": "Apache-2.0",
@@ -233,9 +233,9 @@
         "lodash": ">=4.17.19"
     },
     "dependencies": {
-        "vsce": "^1.77.0",
-        "vscode-languageclient": "^5.2.1",
-        "lodash": ">=4.17.19"
+        "lodash": ">=4.17.19",
+        "vsce": "^1.81.1",
+        "vscode-languageclient": "^5.2.1"
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
