@@ -16,6 +16,20 @@ export async function askForName(prompt: string, initialValue: string): Promise<
     return await window.showInputBox(inputBoxOptions);
 }
 
+export async function askForVerb(prompt: string, initialValue: string): Promise<string> {
+    const inputBoxOptions: InputBoxOptions = {
+        value: initialValue,
+        prompt: prompt,
+        validateInput: (value: string) => {
+            var regex = new RegExp('^[a-z][a-zA-Z]*$');
+            if (!value || !regex.test(value))
+                return 'Please enter a valid verb. Allowed characters are: a-z, A-Z';
+            return '';
+        }
+    }
+    return await window.showInputBox(inputBoxOptions);
+}
+
 export async function askForStringSelection(prompt: string, values: string[]): Promise<string> {
     return await window.showQuickPick(values, { placeHolder: prompt });
 }
