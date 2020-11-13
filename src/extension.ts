@@ -9,6 +9,7 @@ import { LanguageClient, LanguageClientOptions, ServerOptions, VersionedTextDocu
 import * as generators from "./commands/generators";
 import * as sclGenerators from "./commands/sclGenerators";
 import * as transformations from "./commands/transformations";
+import * as quickfixCommands from "./commands/quickfixcommands";
 
 export function activate(context: ExtensionContext) {
     let launcher = os.platform() === 'win32' ? 'context-mapper-lsp.bat' : 'context-mapper-lsp';
@@ -57,6 +58,11 @@ export function activate(context: ExtensionContext) {
         commands.registerCommand("cml.ar.mergeBoundedContexts.proxy", transformations.mergeBoundedContexts()),
         commands.registerCommand("cml.ar.suspendPartnership.proxy", transformations.suspendPartnership()),
         commands.registerCommand("cml.ar.extractSuggestedService.proxy", transformations.extractSuggestedServiceCut())
+    );
+
+    // Register quickfix commands
+    context.subscriptions.push(
+        commands.registerCommand("cml.quickfix.command.splitStoryByVerb.proxy", quickfixCommands.splitStoryByVerb())
     );
 
     // enable tracing (.Off, .Messages, Verbose)
