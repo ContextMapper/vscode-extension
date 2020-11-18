@@ -26,6 +26,9 @@
                     "include": "#userRequirementKeywords"
                 },
                 {
+                    "include": "#applicationLayerKeywords"
+                },
+                {
                     "include": "#tacticDDDKeywords"
                 },
                 {
@@ -62,9 +65,13 @@
             "name": "keyword.control.cml",
             "match": "\\b(UseCase|UserStory|actor|interactions|benefit|scope|level|As a|As an|I want to|so that|true|a|an|with its|with their|in|for|to|create|read|update|delete|supports|split by)\\b"
         },
+        "applicationLayerKeywords": {
+            "name": "keyword.control.cml",
+            "match": "\\b(Application|Flow|delegates to|emits event|event|triggers|command|operation|X|x|O|o)\\b"
+        },
         "tacticDDDKeywords": {
             "name": "keyword.control.cml",
-            "match": "\\b(Module|external|basePackage|hint|Aggregate|responsibilities|useCases|userRequirements|userStories|features|owner|knowledgeLevel|likelihoodForChange|structuralVolatility|contentVolatility|availabilityCriticality|consistencyCriticality|storageSimilarity|securityCriticality|securityZone|securityAccessGroup|Service|gap|nogap|webservice|Resource|scaffold|path|Consumer|unmarshall to|queueName|topicName|subscribe to|eventBus|publish|to|void|throws|hint|path|return|GET|POST|PUT|DELETE|abstract|Entity|extends|with|optimisticLocking|optimisticLocking|auditable|cache|databaseTable|discriminatorValue|discriminatorColumn|discriminatorType|discriminatorLength|inheritanceType|validate|aggregateRoot|belongsTo|ValueObject|DomainEvent|CommandEvent|Trait|package|def|DataTransferObject|BasicType|immutable|key|changeable|required|nullable|index|digits|email|future|past|max|min|decimalMax|decimalMin|notEmpty|notBlank|pattern|range|size|length|scriptAssert|url|validate|transient|databaseColumn|databaseType|cascade|fetch|orderby|orderColumn|Repository|enum|ordinal|JOINED|SINGLE_TABLE|STRING|CHAR|INTEGER|String|int|Integer|long|Long|boolean|Boolean|Date|DateTime|Timestamp|BigDecimal|BigInteger|double|Double|float|Float|Key|PagingParameter|PagedResult|Blob|Clob|Object|Set|List|Bag|Collection|Map|public|protected|private|package|not|delegates to|opposite|reference)\\b"
+            "match": "\\b(Module|external|basePackage|hint|Aggregate|responsibilities|useCases|userRequirements|userStories|features|owner|knowledgeLevel|likelihoodForChange|structuralVolatility|contentVolatility|availabilityCriticality|consistencyCriticality|storageSimilarity|securityCriticality|securityZone|securityAccessGroup|Service|gap|nogap|webservice|Resource|scaffold|path|Consumer|unmarshall to|queueName|topicName|subscribe to|eventBus|publish|to|void|throws|hint|path|return|GET|POST|PUT|DELETE|abstract|Entity|extends|with|optimisticLocking|optimisticLocking|auditable|cache|databaseTable|discriminatorValue|discriminatorColumn|discriminatorType|discriminatorLength|inheritanceType|validate|aggregateRoot|belongsTo|ValueObject|DomainEvent|CommandEvent|Command|Trait|package|def|DataTransferObject|BasicType|immutable|key|changeable|required|nullable|index|digits|email|future|past|max|min|decimalMax|decimalMin|notEmpty|notBlank|pattern|range|size|length|scriptAssert|url|validate|transient|databaseColumn|databaseType|cascade|fetch|orderby|orderColumn|Repository|enum|ordinal|JOINED|SINGLE_TABLE|STRING|CHAR|INTEGER|String|int|Integer|long|Long|boolean|Boolean|Date|DateTime|Timestamp|BigDecimal|BigInteger|double|Double|float|Float|Key|PagingParameter|PagedResult|Blob|Clob|Object|Set|List|Bag|Collection|Map|public|protected|private|package|not|delegates to|opposite|reference|aggregateLifecycle)\\b"
         },
         "stringsSingle": {
             "name": "string.quoted.single.cml",
