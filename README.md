@@ -14,7 +14,7 @@ Related repositories are:
 With the ContextMapper DSL language you can express DDD Context Maps. Once you have modeled your system with the language, you can use the provided generators to create graphical Context Maps, UML diagrams, service contracts, Spring Boot applications (via JHipster JDL) and calculate proposals for service decompositions with [Service Cutter](https://github.com/ServiceCutter/ServiceCutter).
 
 Checkout our website [https://contextmapper.org/](https://contextmapper.org/) to get started.
-The Context Mapper project has been developed as part of projects at [HSR](https://www.hsr.ch) and you can find the project reports and further background information [here](https://contextmapper.org/background-and-publications/).
+The Context Mapper project has been developed as part of projects at [OST (former HSR)](https://www.ost.ch) and you can find the project reports and further background information [here](https://contextmapper.org/background-and-publications/).
 
  **Installation Links:**
   * VS Code:
