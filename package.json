@@ -80,6 +80,11 @@
                 "when": "editorLangId == cml"
             },
             {
+                "command": "cml.generate.sketchminer.proxy",
+                "title": "Generate Sketch Miner Diagrams",
+                "when": "editorLangId == cml"
+            },
+            {
                 "command": "cml.generate.mdsl.proxy",
                 "title": "Generate MDSL Service Contracts",
                 "when": "editorLangId == cml"
@@ -134,33 +139,38 @@
                 },
                 {
                     "when": "resourceLangId == cml",
-                    "command": "cml.generate.generic.text.file.proxy",
+                    "command": "cml.generate.sketchminer.proxy",
                     "group": "cmlGenerators@3"
                 },
                 {
                     "when": "resourceLangId == cml",
-                    "command": "cml.generate.mdsl.proxy",
+                    "command": "cml.generate.generic.text.file.proxy",
                     "group": "cmlGenerators@4"
                 },
                 {
                     "when": "resourceLangId == cml",
-                    "command": "cml.generate.new.service.cut.proxy",
+                    "command": "cml.generate.mdsl.proxy",
                     "group": "cmlGenerators@5"
                 },
                 {
                     "when": "resourceLangId == cml",
-                    "command": "cml.generate.servicecutter.input.proxy",
+                    "command": "cml.generate.new.service.cut.proxy",
                     "group": "cmlGenerators@6"
                 },
                 {
                     "when": "resourceLangId == cml",
-                    "command": "cml.generate.servicecutter.user.representations.proxy",
+                    "command": "cml.generate.servicecutter.input.proxy",
                     "group": "cmlGenerators@7"
                 },
                 {
                     "when": "resourceLangId == cml",
-                    "command": "cml.generate.servicecutter.user.representation.example.file.proxy",
+                    "command": "cml.generate.servicecutter.user.representations.proxy",
                     "group": "cmlGenerators@8"
+                },
+                {
+                    "when": "resourceLangId == cml",
+                    "command": "cml.generate.servicecutter.user.representation.example.file.proxy",
+                    "group": "cmlGenerators@9"
                 },
                 {
                     "when": "resourceLangId == scl",

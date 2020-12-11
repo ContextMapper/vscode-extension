@@ -11,6 +11,10 @@ export function generatePlantUML(): CommandType {
     return generate('cml.generate.puml', 'The PlantUML diagrams have been generated into the src-gen folder.');
 }
 
+export function generateSketchMinerDiagrams(): CommandType {
+    return generate('cml.generate.sketchminer', 'The Sketch Miner diagrams have been generated into the src-gen folder.');
+}
+
 export function generateMDSL(): CommandType {
     return generate('cml.generate.mdsl', 'The MDSL contracts have been generated into the src-gen folder.');
 }

@@ -34,6 +34,7 @@ export function activate(context: ExtensionContext) {
     context.subscriptions.push(
         // CML
         commands.registerCommand("cml.generate.puml.proxy", generators.generatePlantUML()),
+        commands.registerCommand("cml.generate.sketchminer.proxy", generators.generateSketchMinerDiagrams()),
         commands.registerCommand("cml.generate.mdsl.proxy", generators.generateMDSL()),
         commands.registerCommand("cml.generate.generic.text.file.proxy", generators.generateGenericTextFile()),
         commands.registerCommand("cml.generate.contextmap.proxy", generators.generateContextMap()),
