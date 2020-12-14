@@ -2,11 +2,11 @@
  * CML quickfix commands
  */
 
-import { commands, window, Uri, OpenDialogOptions, InputBoxOptions, TextDocumentShowOptions, ViewColumn } from "vscode";
+import * as vscode from "vscode";
+import { commands, window, Uri, ViewColumn } from "vscode";
 import * as editor from "../editors/cml-editor";
 import { CommandType } from "./command"
 import * as input from "./userinput";
-import * as fs from 'fs';
 
 export function splitStoryByVerb(): CommandType {
     return async (...args: any[]) => {
@@ -25,6 +25,12 @@ export function splitStoryByVerb(): CommandType {
             const transformFunction: Function = transform('cml.quickfix.command.splitStoryByVerb', storyName, verbList);
             transformFunction();
         }        
+    };
+}
+
+export function openFlowInSketchMiner(): CommandType {
+    return async (...args: any[]) => {
+        vscode.env.openExternal(vscode.Uri.parse(args[0]));
     };
 }
 

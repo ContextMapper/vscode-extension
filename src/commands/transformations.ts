@@ -2,7 +2,7 @@
  * CML OOAD transformation & refactoring commands
  */
 
-import { commands, window, workspace, Uri, OpenDialogOptions, InputBoxOptions, TextDocumentShowOptions, ViewColumn } from "vscode";
+import { commands, window, Uri, ViewColumn } from "vscode";
 import * as editor from "../editors/cml-editor";
 import { CommandType } from "./command"
 import * as input from "./userinput";
