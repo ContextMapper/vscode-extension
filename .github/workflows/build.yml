@@ -43,4 +43,6 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew clean snapshot vscodeExtension
+      uses: GabrielBB/xvfb-action@v1.0
+      with:
+        run: ./gradlew clean snapshot vscodeExtension
