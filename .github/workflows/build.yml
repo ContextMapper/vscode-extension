@@ -2,12 +2,14 @@ name: Build
 
 on:
   push:
+    branches:
+      - '**'
     tags-ignore: 
       - 'v*'
   pull_request:
 
 jobs:
-  build_standalone:
+  build:
     runs-on: ubuntu-latest
     
     steps:
