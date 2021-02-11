@@ -1,6 +1,6 @@
 ![Context Mapper](https://raw.githubusercontent.com/wiki/ContextMapper/context-mapper-dsl/logo/cm-logo-github-small.png) 
 # Context Mapper VS Code Extension 
-[![Build Status](https://travis-ci.com/ContextMapper/vscode-extension.svg?branch=master)](https://travis-ci.com/ContextMapper/vscode-extension) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Build](https://github.com/ContextMapper/vscode-extension/workflows/Build/badge.svg)](https://github.com/ContextMapper/vscode-extension/actions) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 [ContextMapper](https://contextmapper.org/) is an open source tool providing a Domain-specific Language based on Domain-Driven Design (DDD) patterns for context mapping and service decomposition.
 
