@@ -1,0 +1,49 @@
+name: Release VS Code Extension
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - name: Setup Node
+      uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: 10.16
+    - name: Install Dependencies
+      run: sudo apt-get -y install libsecret-1-dev
+    - name: Gradle caches  
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+    - name: NPM install
+      run: |
+        npm install
+        export DISPLAY=':99.0'
+        /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Publish Release
+      uses: GabrielBB/xvfb-action@v1.0
+      with:
+        run: ./gradlew clean final publish publishToOpenVSX -Prelease.useLastTag=true
+        env:
+          MS_MARKETPLACE_ACCESS_TOKEN: ${{ secrets.MS_MARKETPLACE_ACCESS_TOKEN }}
+          OPENVSX_ACCESS_TOKEN: ${{ secrets.OPENVSX_ACCESS_TOKEN }}
+
