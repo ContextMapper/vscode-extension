@@ -244,7 +244,7 @@
     },
     "dependencies": {
         "lodash": ">=4.17.21",
-        "vsce": "^1.83.0",
+        "vsce": "^1.103.1",
         "vscode-languageclient": "^5.2.1"
     },
     "scripts": {
