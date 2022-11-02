@@ -39,8 +39,8 @@ task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {
 
 node {
     version = nodeVersion
-    npmVersion = npmVersion
     download = true
+    npmInstallCommand = 'ci'
 }
 
 def inputFiles = fileTree(
