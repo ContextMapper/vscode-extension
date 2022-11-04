@@ -38,7 +38,7 @@ jobs:
           ${{ runner.os }}-gradle-
     - name: NPM install
       run: |
-        npm install
+        npm install -g npm
         export DISPLAY=':99.0'
         /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
     - name: Grant execute permission for gradlew
