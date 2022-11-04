@@ -235,16 +235,16 @@
         "@types/node": "^11.13.2",
         "@types/vscode": "^1.33.0",
         "glob": "^7.1.4",
+        "lodash": ">=4.17.21",
         "mocha": "^7.2.0",
         "source-map-support": "^0.5.12",
         "tslint": "^5.19.0",
         "typescript": "^3.8.3",
-        "vscode-test": "^1.3.0",
-        "lodash": ">=4.17.21"
+        "vscode-test": "^1.3.0"
     },
     "dependencies": {
         "lodash": ">=4.17.21",
-        "vsce": "^1.103.1",
+        "vsce": "^2.13.0",
         "vscode-languageclient": "^5.2.1"
     },
     "scripts": {

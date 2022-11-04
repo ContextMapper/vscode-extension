@@ -1,8 +1,6 @@
 buildscript {
     repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
+        gradlePluginPortal()
     }
     dependencies {
         classpath "com.github.node-gradle:gradle-node-plugin:${gradleNodePluginVersion}"
@@ -41,8 +39,8 @@ task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {
 
 node {
     version = nodeVersion
-    npmVersion = npmVersion
     download = true
+    npmInstallCommand = 'ci'
 }
 
 def inputFiles = fileTree(
@@ -97,13 +95,6 @@ task clean {
         delete 'out' // output of npmInstall - don't want to delete node_modules
     }
 
-}
-
-plugins.withType(com.moowork.gradle.node.NodePlugin) {
-    node {
-        workDir = file("$rootProject.buildDir/nodejs")
-        nodeModulesDir = rootProject.projectDir
-    }
 }
 
 task copyLSPApplication(type: Copy) {
