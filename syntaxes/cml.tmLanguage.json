@@ -63,7 +63,7 @@
         },
         "userRequirementKeywords": {
             "name": "keyword.control.cml",
-            "match": "\\b(UseCase|UserStory|actor|interactions|benefit|scope|level|As a|As an|I want to|so that|true|a|an|the|with its|with their|in|for|to|create|read|update|delete|supports|split by)\\b"
+            "match": "\\b(UseCase|UserStory|actor|secondaryActors|interactions|benefit|scope|level|As a|As an|I want to|so that|true|a|an|the|with its|with their|in|for|to|create|read|update|delete|supports|split by)\\b"
         },
         "applicationLayerKeywords": {
             "name": "keyword.control.cml",
