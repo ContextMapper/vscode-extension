@@ -24,7 +24,7 @@ jobs:
     - name: Setup Node
       uses: dcodeIO/setup-node-nvm@master
       with:
-        node-version: 18.12
+        node-version: 18.17
     - name: Install Dependencies
       run: sudo apt-get -y install libsecret-1-dev
     - name: Gradle caches  
