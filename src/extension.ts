@@ -7,7 +7,6 @@ import { Trace } from 'vscode-jsonrpc';
 import { commands, workspace, ExtensionContext, Uri, InputBoxOptions } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions, VersionedTextDocumentIdentifier } from 'vscode-languageclient';
 import * as generators from "./commands/generators";
-import * as sclGenerators from "./commands/sclGenerators";
 import * as transformations from "./commands/transformations";
 import * as quickfixCommands from "./commands/quickfixcommands";
 
@@ -37,14 +36,7 @@ export function activate(context: ExtensionContext) {
         commands.registerCommand("cml.generate.sketchminer.proxy", generators.generateSketchMinerDiagrams()),
         commands.registerCommand("cml.generate.mdsl.proxy", generators.generateMDSL()),
         commands.registerCommand("cml.generate.generic.text.file.proxy", generators.generateGenericTextFile()),
-        commands.registerCommand("cml.generate.contextmap.proxy", generators.generateContextMap()),
-        commands.registerCommand("cml.generate.new.service.cut.proxy", generators.generateNewServiceCut()),
-        commands.registerCommand("cml.generate.servicecutter.input.proxy", generators.generateServiceCutterInput()),
-        commands.registerCommand("cml.generate.servicecutter.user.representations.proxy", generators.generateServiceCutterUserRepresentations()),
-        commands.registerCommand("cml.generate.servicecutter.user.representation.example.file.proxy", generators.generateServiceCutterUserRepresentationExampleFile()),
-        
-        // SCL
-        commands.registerCommand("scl.generate.user.representations.json.file.proxy", sclGenerators.generateServiceCutterUserRepresentationJSONFile())
+        commands.registerCommand("cml.generate.contextmap.proxy", generators.generateContextMap())
     );
 
     // Register OOAD transformation commands
@@ -57,8 +49,7 @@ export function activate(context: ExtensionContext) {
         commands.registerCommand("cml.ar.extractAggregatesByCohesion.proxy", transformations.extractAggregatesByCohesion()),
         commands.registerCommand("cml.ar.mergeAggregates.proxy", transformations.mergeAggregates()),
         commands.registerCommand("cml.ar.mergeBoundedContexts.proxy", transformations.mergeBoundedContexts()),
-        commands.registerCommand("cml.ar.suspendPartnership.proxy", transformations.suspendPartnership()),
-        commands.registerCommand("cml.ar.extractSuggestedService.proxy", transformations.extractSuggestedServiceCut())
+        commands.registerCommand("cml.ar.suspendPartnership.proxy", transformations.suspendPartnership())
     );
 
     // Register quickfix commands

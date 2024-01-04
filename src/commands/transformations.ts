@@ -182,27 +182,6 @@ export function suspendPartnership(): CommandType {
     };
 }
 
-export function extractSuggestedServiceCut(): CommandType {
-    return async (...args: any[]) => {
-        const originalModelURI: string = args[0];
-        const serviceCutModelURI: string = args[1];
-        const serviceName: string = args[2];
-
-        const newBoundedContextName: string = await input.askForName("Please define how the new Bounded Context shall be named.", "NewBoundedContext");
-        if (!newBoundedContextName)
-            return;
-
-        const origUri: Uri = Uri.parse(originalModelURI);
-        if (fs.existsSync(origUri.fsPath)) 
-            await commands.executeCommand('vscode.open', origUri, { viewColumn: ViewColumn.Two });
-        
-        const returnVal: string = await commands.executeCommand('cml.ar.extractSuggestedService', originalModelURI, [serviceCutModelURI, serviceName, newBoundedContextName]);
-        if (returnVal.startsWith('Error occurred:')) {
-            window.showErrorMessage(returnVal);
-        }
-    };
-}
-
 function transform(command: string, ...additionalParameters: any[]): CommandType {
     return async () => {
         if (editor.isNotCMLEditor())

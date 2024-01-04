@@ -98,31 +98,6 @@
                 "command": "cml.generate.contextmap.proxy",
                 "title": "Generate Graphical Context Map",
                 "when": "editorLangId == cml"
-            },
-            {
-                "command": "cml.generate.new.service.cut.proxy",
-                "title": "Propose New Service Cut",
-                "when": "editorLangId == cml"
-            },
-            {
-                "command": "cml.generate.servicecutter.input.proxy",
-                "title": "Generate Service Cutter Input (ERD as JSON)",
-                "when": "editorLangId == cml"
-            },
-            {
-                "command": "cml.generate.servicecutter.user.representations.proxy",
-                "title": "Generate Service Cutter User Representations (SCL)",
-                "when": "editorLangId == cml"
-            },
-            {
-                "command": "cml.generate.servicecutter.user.representation.example.file.proxy",
-                "title": "Generate SCL Example File (Syntax Sample)",
-                "when": "editorLangId == cml"
-            },
-            {
-                "command": "scl.generate.user.representations.json.file.proxy",
-                "title": "Generate Service Cutter User Representation JSON File",
-                "when": "editorLangId == scl"
             }
         ],
         "menus": {
@@ -151,31 +126,6 @@
                     "when": "resourceLangId == cml",
                     "command": "cml.generate.mdsl.proxy",
                     "group": "cmlGenerators@5"
-                },
-                {
-                    "when": "resourceLangId == cml",
-                    "command": "cml.generate.new.service.cut.proxy",
-                    "group": "cmlGenerators@6"
-                },
-                {
-                    "when": "resourceLangId == cml",
-                    "command": "cml.generate.servicecutter.input.proxy",
-                    "group": "cmlGenerators@7"
-                },
-                {
-                    "when": "resourceLangId == cml",
-                    "command": "cml.generate.servicecutter.user.representations.proxy",
-                    "group": "cmlGenerators@8"
-                },
-                {
-                    "when": "resourceLangId == cml",
-                    "command": "cml.generate.servicecutter.user.representation.example.file.proxy",
-                    "group": "cmlGenerators@9"
-                },
-                {
-                    "when": "resourceLangId == scl",
-                    "command": "scl.generate.user.representations.json.file.proxy",
-                    "group": "sclGenerators@1"
                 }
             ]
         },
