@@ -67,7 +67,7 @@
         },
         "applicationLayerKeywords": {
             "name": "keyword.control.cml",
-            "match": "\\b(Application|Flow|delegates to|emits event|event|triggers|command|operation|X|x|O|o|initiated|by)\\b"
+            "match": "\\b(Application|Flow|delegates to|emits event|event|triggers|command|operation|X|x|O|o|initiated|by|Coordination)\\b"
         },
         "tacticDDDKeywords": {
             "name": "keyword.control.cml",
