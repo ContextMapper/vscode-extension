@@ -55,7 +55,8 @@ export function activate(context: ExtensionContext) {
     // Register quickfix commands
     context.subscriptions.push(
         commands.registerCommand("cml.quickfix.command.splitStoryByVerb.proxy", quickfixCommands.splitStoryByVerb()),
-        commands.registerCommand("cml.flow.open.sketch.miner", quickfixCommands.openFlowInSketchMiner())
+        commands.registerCommand("cml.flow.open.sketch.miner", quickfixCommands.openFlowInSketchMiner()),
+        commands.registerCommand("cml.coordination.open.sketch.miner", quickfixCommands.openCoordinationInSketchMiner())
     );
 
     // enable tracing (.Off, .Messages, Verbose)

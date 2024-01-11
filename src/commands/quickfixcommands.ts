@@ -34,6 +34,12 @@ export function openFlowInSketchMiner(): CommandType {
     };
 }
 
+export function openCoordinationInSketchMiner(): CommandType {
+    return async (...args: any[]) => {
+        vscode.env.openExternal(vscode.Uri.parse(args[0]));
+    };
+}
+
 function transform(command: string, ...additionalParameters: any[]): CommandType {
     return async () => {
         if (editor.isNotCMLEditor())
