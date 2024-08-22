@@ -182,6 +182,14 @@ export function suspendPartnership(): CommandType {
     };
 }
 
+export function executeGenericCommandWithSingleStringArg(command: string): CommandType {
+    return async (...args: any[]) => {
+        const singleInputId: string = args[1];
+        const transformFunction: Function = transform(command, singleInputId);
+        transformFunction();
+    }
+}
+
 function transform(command: string, ...additionalParameters: any[]): CommandType {
     return async () => {
         if (editor.isNotCMLEditor())

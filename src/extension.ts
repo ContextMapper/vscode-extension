@@ -39,7 +39,7 @@ export function activate(context: ExtensionContext) {
         commands.registerCommand("cml.generate.contextmap.proxy", generators.generateContextMap())
     );
 
-    // Register OOAD transformation commands
+    // Register transformation commands
     context.subscriptions.push(
         commands.registerCommand("cml.ar.deriveSubdomainFromURs.proxy", transformations.deriveSubdomainFromUserRequirements()),
         commands.registerCommand("cml.ar.deriveBoundedContextFromSDs.proxy", transformations.deriveBoundedContextFromSubdomains()),
@@ -49,7 +49,13 @@ export function activate(context: ExtensionContext) {
         commands.registerCommand("cml.ar.extractAggregatesByCohesion.proxy", transformations.extractAggregatesByCohesion()),
         commands.registerCommand("cml.ar.mergeAggregates.proxy", transformations.mergeAggregates()),
         commands.registerCommand("cml.ar.mergeBoundedContexts.proxy", transformations.mergeBoundedContexts()),
-        commands.registerCommand("cml.ar.suspendPartnership.proxy", transformations.suspendPartnership())
+        commands.registerCommand("cml.ar.suspendPartnership.proxy", transformations.suspendPartnership()),
+        commands.registerCommand("cml.ar.moveStakeholderToGroup.proxy", transformations.executeGenericCommandWithSingleStringArg("cml.ar.moveStakeholderToGroup")),
+        commands.registerCommand("cml.ar.createValueForStakeholder.proxy", transformations.executeGenericCommandWithSingleStringArg("cml.ar.createValueForStakeholder")),
+        commands.registerCommand("cml.ar.addEthicalValueAssessment.proxy", transformations.executeGenericCommandWithSingleStringArg("cml.ar.addEthicalValueAssessment")),
+        commands.registerCommand("cml.ar.wrapValueInCluster.proxy", transformations.executeGenericCommandWithSingleStringArg("cml.ar.wrapValueInCluster")),
+        commands.registerCommand("cml.ar.createStakeholderForUserStoryRole.proxy", transformations.executeGenericCommandWithSingleStringArg("cml.ar.createStakeholderForUserStoryRole")),
+        commands.registerCommand("cml.ar.createValueRegisterForBoundedContext.proxy", transformations.executeGenericCommandWithSingleStringArg("cml.ar.createValueRegisterForBoundedContext")),
     );
 
     // Register quickfix commands
