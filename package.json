@@ -14,7 +14,7 @@
         "url": "https://github.com/ContextMapper/vscode-extension/issues"
     },
     "engines": {
-        "vscode": "^1.33.0"
+        "vscode": "^1.92.0"
     },
     "categories": [
         "Programming Languages"
@@ -181,21 +181,22 @@
     },
     "devDependencies": {
         "@types/glob": "^7.1.1",
-        "@types/mocha": "^10.0.6",
-        "@types/node": "^11.13.2",
-        "@types/vscode": "^1.33.0",
+        "@types/mocha": "^10.0.7",
+        "@types/node": "20.x",
+        "@types/vscode": "^1.92.0",
         "glob": "^7.1.4",
         "lodash": ">=4.17.21",
         "mocha": "^10.2.0",
         "source-map-support": "^0.5.12",
         "tslint": "^5.19.0",
-        "typescript": "^3.8.3",
+        "typescript": "^5.4.5",
         "vscode-test": "^1.3.0"
     },
     "dependencies": {
+        "@vscode/vsce": "^2.32.0",
         "lodash": ">=4.17.21",
         "vsce": "^2.15.0",
-        "vscode-languageclient": "^5.2.1"
+        "vscode-languageclient": "^9.0.1"
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",

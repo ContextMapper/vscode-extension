@@ -1,6 +1,6 @@
 /* user input helpers */
 
-import { window, InputBoxOptions, QuickPickOptions } from "vscode";
+import { window, InputBoxOptions } from "vscode";
 
 export async function askForName(prompt: string, initialValue: string): Promise<string> {
     const inputBoxOptions: InputBoxOptions = {

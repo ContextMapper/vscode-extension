@@ -2,7 +2,7 @@
  * CML generator commands
  */
 
-import { commands, window, workspace, Uri, OpenDialogOptions, InputBoxOptions, TextDocumentShowOptions, ViewColumn } from "vscode";
+import { commands, window, workspace, Uri, OpenDialogOptions, InputBoxOptions, ViewColumn } from "vscode";
 import * as editor from "../editors/cml-editor";
 import { CommandType } from "./command"
 import * as fs from 'fs';

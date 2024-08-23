@@ -3,7 +3,7 @@
  */
 
 import * as vscode from "vscode";
-import { commands, window, Uri, ViewColumn } from "vscode";
+import { commands, window } from "vscode";
 import * as editor from "../editors/cml-editor";
 import { CommandType } from "./command"
 import * as input from "./userinput";
