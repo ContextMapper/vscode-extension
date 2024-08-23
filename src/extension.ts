@@ -52,7 +52,6 @@ export function activate(context: ExtensionContext) {
         commands.registerCommand("cml.ar.mergeAggregates.proxy", transformations.mergeAggregates()),
         commands.registerCommand("cml.ar.mergeBoundedContexts.proxy", transformations.mergeBoundedContexts()),
         commands.registerCommand("cml.ar.suspendPartnership.proxy", transformations.suspendPartnership()),
-        commands.registerCommand("cml.ar.moveStakeholderToGroup.proxy", transformations.executeGenericCommandWithSingleStringArg("cml.ar.moveStakeholderToGroup")),
         commands.registerCommand("cml.ar.createValueForStakeholder.proxy", transformations.executeGenericCommandWithSingleStringArg("cml.ar.createValueForStakeholder")),
         commands.registerCommand("cml.ar.addEthicalValueAssessment.proxy", transformations.executeGenericCommandWithSingleStringArg("cml.ar.addEthicalValueAssessment")),
         commands.registerCommand("cml.ar.wrapValueInCluster.proxy", transformations.executeGenericCommandWithSingleStringArg("cml.ar.wrapValueInCluster")),
