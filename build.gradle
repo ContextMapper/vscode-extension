@@ -8,16 +8,16 @@ buildscript {
 }
 
 plugins {
-    id 'nebula.release' version '19.0.10'
+    id 'nebula.release' version '21.1.4'
     id 'com.github.node-gradle.node' version "${gradleNodePluginVersion}"
 }
 
-group 'org.contextmapper'
+group = 'org.contextmapper'
 
 repositories {
     mavenCentral()
     maven {
-        url "https://oss.sonatype.org/content/repositories/snapshots/"
+        url = "https://central.sonatype.com/repository/maven-snapshots/"
     }
 }
 
@@ -27,14 +27,6 @@ configurations {
 
 dependencies {
     cmlLSPTar "org.contextmapper:context-mapper-lsp:${cmlVersion}@tar"
-}
-
-task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {
-    ext.destPath = "$rootProject.projectDir/node_modules/vsce"
-    outputs.dir(destPath)
-    group 'Node'
-    description 'Installs the NodeJS package "Visual Studio Code Extension Manager"'
-    args = [ 'install', 'vsce' ]
 }
 
 node {
@@ -54,11 +46,12 @@ npmInstall {
 }
 
 task checkVersion() {
+    def projectVersion = project.version
+    def packageJsonFile = file('package.json')
     doLast {
-        def packageJsonFile = file('package.json')
         def json = new groovy.json.JsonSlurper().parseText(packageJsonFile.text)
-        if(!project.version.toString().equals(json.version))
-            throw new GradleException("The project (Gradle) version and the extension (NPM) version do not match! (${json.version} != ${project.version})")
+        if(!projectVersion.toString().equals(json.version))
+            throw new GradleException("The project (Gradle) version and the extension (NPM) version do not match! (${json.version} != ${projectVersion})")
     }
 }
 
@@ -70,19 +63,16 @@ task test(dependsOn: [npmInstall,checkVersion], type: NpmTask) {
     inputs.file 'package-lock.json'
 }
 
-task vscodeExtension(dependsOn: [npmInstall, npmInstallVsce, test], type: NodeTask) {
+task vscodeExtension(dependsOn: [npmInstall, test], type: NodeTask) {
     ext.destDir = new File(buildDir, 'vscode')
     ext.archiveName = "${project.name}-${project.version.toString()}.vsix"
     ext.destPath = "${ext.destDir}/${ext.archiveName}"
-    inputs.with {
-        files inputFiles
-        dir npmInstallVsce.destPath
-    }
+    inputs.files inputFiles
     outputs.dir destDir
     doFirst {
         destDir.mkdirs()
     }
-    script = file("$npmInstallVsce.destPath/vsce")
+    script = file("$rootProject.projectDir/node_modules/@vscode/vsce/vsce")
     args = [ 'package', '--out', ext.destPath ]
     execOverrides {
         workingDir = projectDir
@@ -133,15 +123,15 @@ task startCode(type:Exec, dependsOn: installExtension) {
 }
 
 task publish(dependsOn: vscodeExtension, type: NodeTask) {
-    script = file("$rootProject.projectDir/node_modules/vsce/vsce")
-    args = [ 'publish', '-p', System.getenv('MS_MARKETPLACE_ACCESS_TOKEN'), "--packagePath", "${project.buildDir}/vscode/vscode-extension-${project.version}.vsix"]
+    script = file("$rootProject.projectDir/node_modules/@vscode/vsce/vsce")
+    args = [ 'publish', '-p', System.getenv('MS_MARKETPLACE_ACCESS_TOKEN') ?: '', "--packagePath", "${project.buildDir}/vscode/vscode-extension-${project.version}.vsix"]
     execOverrides {
         workingDir = projectDir
     }
 }
 
 task publishToOpenVSX(dependsOn: vscodeExtension, type: Exec) {
-    commandLine 'npx', 'ovsx', '--debug', 'publish', "--packagePath", projectDir, '--pat', System.getenv('OPENVSX_ACCESS_TOKEN')
+    commandLine 'npx', 'ovsx', '--debug', 'publish', "--packagePath", projectDir, '--pat', System.getenv('OPENVSX_ACCESS_TOKEN') ?: ''
 }
 
 task updateVersion() {
