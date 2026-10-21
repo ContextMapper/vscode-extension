@@ -61,7 +61,7 @@
         },
         "boundedContextKeywords": {
             "name": "keyword.control.cml",
-            "match": "\\b(BoundedContext|implements|realizes|refines|domainVisionStatement|type|responsibilities|implementationTechnology|knowledgeLevel|UNDEFINED|FEATURE|APPLICATION|SYSTEM|TEAM|META|CONCRETE)\\b"
+            "match": "\\b(BoundedContext|implements|realizes|refines|domainVisionStatement|type|responsibilities|nonResponsibilities|implementationTechnology|knowledgeLevel|UNDEFINED|FEATURE|APPLICATION|SYSTEM|TEAM|META|CONCRETE)\\b"
         },
         "domainKeywords": {
             "name": "keyword.control.cml",
