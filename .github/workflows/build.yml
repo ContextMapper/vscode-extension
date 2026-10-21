@@ -50,3 +50,10 @@ jobs:
       env:
         MS_MARKETPLACE_ACCESS_TOKEN: ${{ secrets.MS_MARKETPLACE_ACCESS_TOKEN }}
         OPENVSX_ACCESS_TOKEN: ${{ secrets.OPENVSX_ACCESS_TOKEN }}
+    - name: Upload extension (.vsix)
+      uses: actions/upload-artifact@v7
+      with:
+        name: context-mapper-vscode-extension
+        path: build/vscode/*.vsix
+        if-no-files-found: error
+        retention-days: 14
