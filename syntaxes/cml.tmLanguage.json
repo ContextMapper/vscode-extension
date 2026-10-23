@@ -14,78 +14,30 @@
                     "include": "#blockcomment"
                 },
                 {
-                    "include": "#contextMapKeywords"
-                },
-                {
-                    "include": "#boundedContextKeywords"
-                },
-                {
-                    "include": "#domainKeywords"
-                },
-                {
-                    "include": "#applicationLayerKeywords"
-                },
-                {
-                    "include": "#userRequirementKeywords"
-                },
-                {
-                    "include": "#tacticDDDKeywords"
-                },
-                {
-                    "include": "#stakeholderKeyWords"
-                },
-                {
-                    "include": "#valueRegisterKeyWords"
-                },
-                {
                     "include": "#stringsSingle"
                 },
                 {
                     "include": "#stringsDouble"
+                },
+                {
+                    "include": "#phrases"
+                },
+                {
+                    "include": "#types"
+                },
+                {
+                    "include": "#keywords"
                 }
             ]
         },
         "linecomment": {
-            "name": "comment.line.double-dash.cml",
-            "begin": "(^[ \\t]+)?(?=//)",
-            "end": "(?=$)"
+            "name": "comment.line.double-slash.cml",
+            "match": "//.*$"
         },
         "blockcomment": {
             "name": "comment.block.cml",
-            "begin": "/\\*(\\*)?(?!/)",
+            "begin": "/\\*",
             "end": "\\*/"
-        },
-        "contextMapKeywords": {
-            "name": "keyword.control.cml",
-            "match": "\\b(import|ContextMap|type|state|contains|P|Partnership|SK|Shared-Kernel|implementationTechnology|U|D|C|S|OHS|PL|ACL|CF|Upstream-Downstream|Downstream-Upstream|Customer-Supplier|Supplier-Customer|exposedAggregates|downstreamRights|UNDEFINED|SYSTEM_LANDSCAPE|ORGANIZATIONAL|AS_IS|TO_BE|INFLUENCER|OPINION_LEADER|VETO_RIGHT|DECISION_MAKER|MONOPOLIST)\\b"
-        },
-        "boundedContextKeywords": {
-            "name": "keyword.control.cml",
-            "match": "\\b(BoundedContext|implements|realizes|refines|domainVisionStatement|type|responsibilities|implementationTechnology|knowledgeLevel|UNDEFINED|FEATURE|APPLICATION|SYSTEM|TEAM|META|CONCRETE)\\b"
-        },
-        "domainKeywords": {
-            "name": "keyword.control.cml",
-            "match": "\\b(Domain|domainVisionStatement|Subdomain|type|domainVisionStatement|CORE_DOMAIN|SUPPORTING_DOMAIN|GENERIC_SUBDOMAIN)\\b"
-        },
-        "userRequirementKeywords": {
-            "name": "keyword.control.cml",
-            "match": "\\b(UseCase|UserStory|actor|secondaryActors|interactions|benefit|scope|level|As a|As an|I want to|so that|true|a|an|the|with its|with their|in|for|to|create|read|update|delete|supports|split by|and that|is|are|promoted|accepting that|reduced|harmed)\\b"
-        },
-        "applicationLayerKeywords": {
-            "name": "keyword.control.cml",
-            "match": "\\b(Application|Flow|delegates to|emits event|event|triggers|command|operation|X|x|O|o|initiated|by|Coordination)\\b"
-        },
-        "tacticDDDKeywords": {
-            "name": "keyword.control.cml",
-            "match": "\\b(Module|external|basePackage|hint|Aggregate|responsibilities|useCases|userRequirements|userStories|features|owner|knowledgeLevel|likelihoodForChange|structuralVolatility|contentVolatility|availabilityCriticality|consistencyCriticality|storageSimilarity|securityCriticality|securityZone|securityAccessGroup|Service|gap|nogap|webservice|Resource|scaffold|path|Consumer|unmarshall to|queueName|topicName|subscribe to|eventBus|publish|to|void|throws|hint|path|return|GET|POST|PUT|DELETE|abstract|Entity|extends|with|optimisticLocking|optimisticLocking|auditable|cache|databaseTable|discriminatorValue|discriminatorColumn|discriminatorType|discriminatorLength|inheritanceType|validate|aggregateRoot|belongsTo|ValueObject|DomainEvent|Event|CommandEvent|Command|Trait|package|def|DataTransferObject|BasicType|immutable|key|unique|changeable|required|nullable|index|digits|email|future|past|max|min|decimalMax|decimalMin|notEmpty|notBlank|pattern|range|size|length|scriptAssert|url|validate|transient|databaseColumn|databaseType|cascade|fetch|orderby|orderColumn|Repository|enum|ordinal|JOINED|SINGLE_TABLE|STRING|CHAR|INTEGER|String|int|Integer|long|Long|boolean|Boolean|Date|DateTime|Timestamp|BigDecimal|BigInteger|double|Double|float|Float|Key|PagingParameter|PagedResult|Blob|Clob|Object|Set|List|Bag|Collection|Map|public|protected|private|package|not|delegates|to|opposite|reference|aggregateLifecycle|read|-only|write)\\b"
-        },
-        "stakeholderKeyWords": {
-            "name": "keyword.control.cml",
-            "match": "\\b(Stakeholders|of|StakeholderGroup|Stakeholder|influence|interest|description|UNDEFINED|HIGH|MEDIUM|LOW)\\b"
-        },
-        "valueRegisterKeyWords": {
-            "name": "keyword.control.cml",
-            "match": "\\b(ValueRegister|for|ValueCluster|core|demonstrator|relatedValue|opposingValue|Value|isCore|Stakeholder|Stakeholders|priority|impact|consequences|ValueEpic|As a|I value|as demonstrated in|realization of|reduction of|ValueNarrative|When the SOI executes|stakeholders expect it to promote|protect or create|possibly degrading or prohibiting|with the following externally observable and|or internally auditable behavior|ValueWeigthing|In the context of the SOI|stakeholder|values|more than|expecting benefits such as|running the risk of harms such as|good|bad|neutral|action|ACT|MONITOR|UNDEFINED|HIGH|MEDIUM|LOW|AUTONOMY|CARE|CONTROL|FAIRNESS|INCLUSIVENESS|INNOVATION|PERFECTION|PRIVACY|RESPECT|SUSTAINABILITY|TRANSPARENCY|TRUST)\\b"
         },
         "stringsSingle": {
             "name": "string.quoted.single.cml",
@@ -96,6 +48,18 @@
             "name": "string.quoted.double.cml",
             "begin": "\"",
             "end": "\""
+        },
+        "phrases": {
+            "name": "keyword.control.cml",
+            "match": "(?<!\\w)(with\\s+the\\s+following\\s+externally\\s+observable\\s+and/or\\s+internally\\s+auditable\\s+behavior:|stakeholders\\s+expect\\s+it\\s+to\\s+promote,\\s+protect\\s+or\\s+create|possibly\\s+degrading\\s+or\\s+prohibiting|running\\s+the\\s+risk\\s+of\\s+harms\\s+such\\s+as|In\\s+the\\s+context\\s+of\\s+the\\s+SOI,|expecting\\s+benefits\\s+such\\s+as|When\\s+the\\s+SOI\\s+executes|as\\s+demonstrated\\s+in|accepting\\s+that|realization\\s+of|unmarshall\\s+to|delegates\\s+to|initiated\\s+by|reduction\\s+of|emits\\s+event|with\\s+their|I\\s+want\\s+to|more\\s+than|and\\s+that|split\\s+by|with\\s+its|I\\s+value|so\\s+that|As\\s+an|As\\s+a)(?!\\w)"
+        },
+        "types": {
+            "name": "support.type.cml",
+            "match": "(?<!\\w)(PagingParameter|PagedResult|BigDecimal|BigInteger|Collection|Timestamp|DateTime|Boolean|Integer|boolean|Double|Object|String|double|Float|float|Blob|Clob|Date|List|Long|long|void|Bag|Key|Map|Set|int)(?!\\w)"
+        },
+        "keywords": {
+            "name": "keyword.control.cml",
+            "match": "(?<!\\w)(implementationTechnology|availabilityCriticality|consistencyCriticality|domainVisionStatement|TacticDDDApplication|structuralVolatility|Downstream-Upstream|Upstream-Downstream|discriminatorColumn|discriminatorLength|likelihoodForChange|securityAccessGroup|securityCriticality|DataTransferObject|aggregateLifecycle|databaseJoinColumn|discriminatorValue|Customer-Supplier|GENERIC_SUBDOMAIN|SUPPORTING_DOMAIN|Supplier-Customer|contentVolatility|databaseJoinTable|discriminatorType|exposedAggregates|optimisticLocking|storageSimilarity|SYSTEM_LANDSCAPE|StakeholderGroup|creditCardNumber|downstreamRights|responsibilities|userRequirements|ApplicationPart|inheritanceType|secondaryActors|BoundedContext|DECISION_MAKER|OPINION_LEADER|ORGANIZATIONAL|SUSTAINABILITY|ValueNarrative|ValueWeigthing|databaseColumn|knowledgeLevel|INCLUSIVENESS|Shared-Kernel|ValueRegister|aggregateRoot|businessModel|databaseTable|opposingValue|AccessObject|CUSTOM_BUILT|CommandEvent|Coordination|SINGLE_TABLE|Stakeholders|TRANSPARENCY|ValueCluster|consequences|databaseType|demonstrator|interactions|relatedValue|scriptAssert|securityZone|APPLICATION|Application|CORE_DOMAIN|DomainEvent|Partnership|Stakeholder|ValueObject|assertFalse|association|basePackage|description|orderColumn|stakeholder|userStories|ContextMap|INFLUENCER|INNOVATION|MONOPOLIST|PERFECTION|Repository|VETO_RIGHT|assertTrue|changeable|decimalMax|decimalMin|implements|persistent|webservice|Aggregate|BasicType|COMMODITY|Subdomain|UNDEFINED|UserStory|ValueEpic|auditable|belongsTo|condition|construct|evolution|immutable|influence|operation|protected|queueName|read-only|reference|subscribe|topicName|transient|AUTONOMY|CONCRETE|Consumer|FAIRNESS|Resource|abstract|contains|eventBus|external|features|interest|notBlank|notEmpty|nullable|opposite|priority|promoted|realizes|required|scaffold|supports|triggers|useCases|validate|CONTROL|Command|FEATURE|GENESIS|INTEGER|MONITOR|PRIVACY|PRODUCT|RESPECT|Service|UseCase|benefit|cascade|command|extends|groupBy|inverse|neutral|orderBy|orderby|ordinal|package|pattern|private|publish|reduced|refines|DELETE|Domain|Entity|JOINED|MEDIUM|Module|NORMAL|RARELY|STRING|SYSTEM|action|create|delete|digits|future|harmed|impact|import|inject|isCore|length|public|return|select|throws|unique|update|values|AS_IS|Event|OFTEN|TO_BE|TRUST|Trait|Value|actor|build|cache|email|event|fetch|index|level|nogap|owner|query|range|scope|state|valid|write|CARE|CHAR|Flow|HIGH|HUGE|META|None|POST|TEAM|TINY|core|enum|good|hint|past|path|read|size|type|with|ACL|ACT|GET|LOW|OHS|PUT|are|bad|def|for|gap|key|map|max|min|not|the|url|CF|PL|SK|an|in|is|of|to|C|D|O|P|S|U|X|a|o|x)(?!\\w)"
         }
     },
     "patterns": [
